@@ -1,0 +1,69 @@
+body{
+    background-image: url(../img/gestion.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.formulario{
+    background: rgb(0,0,0,.75);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.568) ;
+    color: white;
+}
+.form-control:focus{
+    background: none;
+    box-shadow: none;
+}
+.form-control{
+    background: rgba(0,0,0,.3);
+    border-style: none;
+    transition: 0.5 ease-in;
+    outline: none;
+    box-shadow: none;
+}
+.form-control::placeholder{
+    color:white;
+}
+.ingresar{
+    background: #B40404;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 700!important;
+    color: white;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.568) ;
+    transition: 0.5s ease-in;
+}
+
+.ingresar:hover {
+    color: white
+}
+.olvide{
+    color:white;
+    text-decoration-style: none;
+    text-decoration-line: none;
+}
+.olvide:hover{
+    color:white;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    cursor: pointer;
+}
+
+.olvide1{
+    color:white;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    font-size: 20px;
+    font-weight: 700!important;
+    
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .5);
+}
+.olvide1:hover{
+    color:white;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    cursor: pointer;
+}

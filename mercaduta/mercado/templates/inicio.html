@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=0, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href="inicio.css">
+</head>
+<body>
+    <header> mercadUTA </header>
+    <section>
+        <div>
+            <h1>Aqui va una imagen bacan xd </h1>
+        </div>
+    </section>
+    <nav>
+        <ul>
+            <li><a href="">Inicio</a></li>
+            <li><a href="{{url_for('usuario.mi_perfil')}}">Mi perfil</a></li>
+            <li><a href="{{url_for('usuario.mis_ofertas')}}">Mis ofertas</a></li>
+            <li><a href="{{url_for('mercado.comunicate')}}">Comunicate con nosotros</a></li>
+        </ul>
+    </nav> 
+    <section>
+        <div>
+            <div>
+                <br><h1>CATEGORIAS</h1>
+            </div>
+            <div> 
+                <div><a href="{{url_for('mercado.mostrar_productos',categoria='Computadoras')}}">Computadoras</a></div>
+                <div><a href="">Celulares</a></div>
+                <div><a href="">Componentes electronicos</a></div>
+                <div><a href="">Vehiculos</a></div>
+                <div><a href="">Otros</a></div>
+            </div>
+            <div>
+                <a href="">Todos</a>
+            </div>
+        </div>
+    </section>
+    <footer><h6>Ey que paso gente</h6></footer>
+</body>
+</html>

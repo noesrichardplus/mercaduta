@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="{{url_for('auth.registro')}}" method="POST">
+        <input name = 'email' type = "text" placeholder="ejemplo@uta.edu.ec" > <br>
+        <input name = 'nombre' type = "text" placeholder="Nombre" > <br>
+        <input name = 'apellido' type = "text" placeholder="Apellido" > <br>
+        <input name = 'contra' type = "text" placeholder="Contraseña" > <br>
+        <input name = 'repe_contra' type = "text" placeholder="Repita la contraseña" ><br>
+        <Button type = "submit">Registrarse</Button>
+
+    </form>
+<button type = "button" onclick="location.href = '{{url_for('auth.login')}}'" >Entrar</button>   
+</body>
+</html>
