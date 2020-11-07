@@ -13,8 +13,8 @@
                 <h2> 
                     <a href="{{url_for('mercado.descripcion',id_ofer=producto['id_oferta'])}}">{{producto['titulo_oferta']}}</a>
                 </h2>
-                <h4>{{producto['des_oferta']}}</h4>
-                <h4>{{producto['precio_oferta']}}</h4>
+                <h4>Descripcion: {{producto['des_oferta']}}</h4>
+                <h4>Precio: {{producto['precio_oferta']}}</h4>
             </article>
 
         {%endfor%}
