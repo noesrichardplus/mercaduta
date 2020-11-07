@@ -10,8 +10,8 @@
     <h1>Mis Ofertas Subidas</h1>
         {%for oferta in ofertas%}
             <h3>{{oferta['titulo_oferta']}}</h3>
-            <h4>Descripcion: {{producto['des_oferta']}}</h4>
-            <h4>Precio: {{producto['precio_oferta']}}</h4>
+            <h4>Descripcion: {{oferta['des_oferta']}}</h4>
+            <h4>Precio: {{oferta['precio_oferta']}}</h4>
         {%endfor%}
     {%endblock%}
 </body>
