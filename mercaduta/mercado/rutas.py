@@ -19,10 +19,10 @@ def mostrar_productos(categoria):
     productos = db_query.seleccionar_ofertas(categoria)
     return render_template("productos.html",productos=productos)
 
-@mercado.route("/mercado/descripcion/<id_ofer>")
+@mercado.route("/mercado/descripcion/<id_oferta>")
 @login_required
-def descripcion(id_ofer): 
-    producto = db_query.seleccionar_oferta(id_ofer)
+def descripcion(id_oferta): 
+    producto = db_query.seleccionar_oferta(id_oferta)
     return render_template("descripcion.html",producto = producto)
 
 

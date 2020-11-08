@@ -20,9 +20,9 @@ def seleccionar_ofertas(categoria):
     return cur.fetchall()
 
 
-def seleccionar_oferta(id_ofer): 
+def seleccionar_oferta(id_oferta): 
     cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(f"SELECT * FROM ofertas WHERE id_oferta={id_ofer}")
+    cur.execute(f"SELECT * FROM ofertas WHERE id_oferta={id_oferta}")
     return cur.fetchone()
 
 
