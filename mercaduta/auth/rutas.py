@@ -8,7 +8,7 @@ import mercaduta.db_query as db_query
 auth = Blueprint('auth', __name__,template_folder='templates',static_folder='static',static_url_path="/%s"%__name__)
 
 
-@auth.route('/', methods=['GET', 'POST'])
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email_user']
