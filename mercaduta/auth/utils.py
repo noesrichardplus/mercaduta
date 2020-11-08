@@ -1,5 +1,5 @@
 import re
-from flask import redirect,url_for
+from flask import redirect,url_for,session
 from functools import wraps
 def verificar_email(email): 
     regex = "[^@]."
@@ -38,7 +38,7 @@ def verificar_registro(nombre,apellido,passwd,repe_passwd):
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if g.user is None:
+        if 'email' not in session:
             return redirect(url_for('auth.login'))
         return f(*args, **kwargs)
     return decorated_function
