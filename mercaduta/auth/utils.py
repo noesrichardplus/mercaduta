@@ -1,6 +1,6 @@
 import re
-
-
+from flask import redirect,url_for
+from functools import wraps
 def verificar_email(email): 
     regex = "[^@]."
     no_empieza = re.match(regex,email)
@@ -33,4 +33,12 @@ def verificar_registro(nombre,apellido,passwd,repe_passwd):
     else: 
         return False
 
-print(verificar_registro("richard","carrion","123qwer.@","123qwer.@"))
+
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if g.user is None:
+            return redirect(url_for('auth.login'))
+        return f(*args, **kwargs)
+    return decorated_function
