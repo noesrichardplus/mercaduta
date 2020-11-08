@@ -10,7 +10,7 @@ mercado = Blueprint("mercado",__name__,template_folder='templates')
 def inicio(): 
     if 'email' in session: 
         return render_template("inicio.html")
-    return redirect('/')
+    return redirect(url_for("auth.login"))
 
 
 @mercado.route("/mercado/<categoria>")
