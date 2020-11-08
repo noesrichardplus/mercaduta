@@ -11,5 +11,3 @@ USER = url.username
 PASSWD = url.password
 HOST = url.hostname
 PORT = url.port
-
-

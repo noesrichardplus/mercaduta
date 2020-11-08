@@ -11,14 +11,10 @@ auth = Blueprint('auth', __name__,template_folder='templates',static_folder='sta
 @auth.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        print("entra")
         email = request.form['email_user']
         passwd = request.form['passwd_user']
-        print(email)
-        print(passwd)
         es_cuenta = db_query.verificar_cuenta(email, passwd)
         if es_cuenta:
-            print("entra2")
             session['email'] = email
             return redirect(url_for('mercado.inicio'))
         return render_template('login.html')
@@ -43,3 +39,9 @@ def registro():
             return "El email esta mal"
 
     return render_template('registro.html')
+
+
+@auth.route("/logout")
+def logout(): 
+    session.clear() 
+    return redirect(url_for("auth.login"))
