@@ -6,7 +6,7 @@ import mercaduta.db_query as db_query
 mercado = Blueprint("mercado",__name__,template_folder='templates')
 
 
-@mercado.route("/inicio")
+@mercado.route("/")
 @login_required
 def inicio(): 
     return render_template("inicio.html")
