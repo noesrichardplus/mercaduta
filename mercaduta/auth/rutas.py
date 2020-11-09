@@ -2,7 +2,7 @@ from flask import render_template, redirect, request, Blueprint, url_for, sessio
 
 
 from mercaduta.auth.utils import *
-import mercaduta.db_query as db_query
+import mercaduta.db_query as dbq
 
 
 auth = Blueprint('auth', __name__,template_folder='templates',static_folder='static',static_url_path="/%s"%__name__)
@@ -13,7 +13,7 @@ def login():
     if request.method == 'POST':
         email = request.form['email_user']
         passwd = request.form['passwd_user']
-        es_cuenta = db_query.verificar_cuenta(email, passwd)
+        es_cuenta = dbq.verificar_cuenta(email, passwd)
         if es_cuenta:
             session['email'] = email
             return redirect(url_for('mercado.inicio'))
@@ -22,8 +22,8 @@ def login():
     return render_template('login.html')
 
 
-@auth.route('/regis', methods=['GET', 'POST'])
-def registro():
+@auth.route('/signup', methods=['GET', 'POST'])
+def signup():
     if request.method == 'POST':
         email = request.form['email']
         nombre = request.form['nombre']
@@ -32,13 +32,13 @@ def registro():
         repe_passwd = request.form['repe_contra']
         if verificar_email(email):
             if verificar_registro(nombre, apellido, passwd, repe_passwd):
-                db_query.registrar_usuario(email, passwd, nombre, apellido)
+                dbq.registrar_usuario(email, passwd, nombre, apellido)
             else:
-                return "Las contras no se repiten bien"
+                return "Las contras no se repiten bien o no cumplen con las normas"
         else:
             return "El email esta mal"
 
-    return render_template('registro.html')
+    return render_template('signup.html')
 
 
 @auth.route("/logout")
