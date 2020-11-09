@@ -42,3 +42,9 @@ def login_required(f):
             return redirect(url_for('auth.login'))
         return f(*args, **kwargs)
     return decorated_function
+
+
+
+def funcion_prueba(): 
+    print("Funcion de prueba" )
+    return 1
