@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action = "{{ url_for('mercado.crear_oferta') }}" method="POST">
+
+        <input name = "titulo" type="text" placeholder="Titulo">
+        <input name = "precio" type="text" placeholder="Precio">
+        <select name="categoria" >
+            <option value="Computadoras">Computadoras</option>
+            <option value="Celulares">Celulares</option>
+            <option value="Componentes electronicos">Componentes electronicos</option>
+            <option value="Vehiculos">Vehiculos</option>
+            <option value="Otros">Otros</option>
+        </select>
+        <input type="radio" name="condicion" id="nuevo" value="Nuevo">
+        <label for="uevo">Nuevo</label>
+        <input type="radio" name="condicion" id="usado" value="Usado">
+        <label for="usuado">Usado</label>
+        <textarea name="des" id="" cols="30" rows="10"></textarea>
+        <input type="submit" value="SUBIR">
+    </form> 
+</body>
+</html>
