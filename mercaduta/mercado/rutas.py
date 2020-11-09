@@ -39,10 +39,6 @@ def crear_oferta():
         precio = request.form['precio']
         categoria = request.form['categoria']
         condicion = request.form['condicion']
-        if condicion == "Nuevo": 
-            condcion = True
-        else: 
-            condcion = False
         descripcion = request.form['des']
         fecha = '2020-01-01'
         usuario = session['email']
