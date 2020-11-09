@@ -1,5 +1,5 @@
 
-from flask import Blueprint,render_template, session, url_for, redirect
+from flask import Blueprint,render_template, session, url_for, redirect,request
 from mercaduta.auth.utils import login_required
 import mercaduta.db_query as db_query
 
@@ -32,4 +32,17 @@ def comunicate():
     return render_template("comunicate.html")
 
 
-
+@mercado.route("/crear-oferta",methods = ["GET","POST"]) 
+def crear_oferta(): 
+    if request.method == "POST": 
+        titulo = request.form['titulo']
+        precio = request.form['precio']
+        categoria = request.form['categoria']
+        condicion = request.form['condicion']
+        descripcion = request.form['des']
+        print(titulo)
+        print(precio)
+        print(categoria)
+        print(condicion)
+        print(descripcion)
+    return render_template("crear_oferta.html")
