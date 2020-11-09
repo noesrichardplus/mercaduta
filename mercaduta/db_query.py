@@ -35,3 +35,9 @@ def get_ofertas(email):
     cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute(f"SELECT * FROM ofertas WHERE usuario_oferta = '{email}'")
     return cur.fetchall()
+
+def crear_oferta(titulo,precio,categoria,condicion,descripcion,fecha,usuario): 
+    cur = db.connection.cursor()
+    cur.execute(f'''INSERT INTO ofertas(titulo_oferta,precio_oferta,categoria_oferta,condicion_oferta,des_oferta,fecha_oferta,usuario_oferta)
+                    VALUES  ('{titulo}',{precio},'{categoria}',{condicion},'{descripcion}','{fecha}','{usuario}');''' )
+    cur.connection.commit()                    
