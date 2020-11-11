@@ -1,6 +1,6 @@
 from flask import render_template, redirect, request, Blueprint, url_for, session
-
-
+from flask_mail import Message
+from mercaduta import mail
 from mercaduta.auth.utils import *
 import mercaduta.db_query as dbq
 
@@ -45,3 +45,11 @@ def signup():
 def logout(): 
     session.clear() 
     return redirect(url_for("auth.login"))
+
+
+@auth.route("/signup-verification")
+def index(): 
+    msg = Message("Hola",recipients=[''])
+    msg.body = "Hola como estas prro" 
+    mail.send(msg)
+    return "se envio correctamente"  
