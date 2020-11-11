@@ -10,7 +10,7 @@ def create_app():
     app.secret_key = 'super secret key'
 
     #Configura la app en base a la configuracion que le pasamos como objeto
-    app.config.from_object(HerokuDB_Config())
+    app.config.from_object(HerokuDB_Config)
 
     db.init_app(app)
 
