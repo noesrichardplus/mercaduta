@@ -45,11 +45,3 @@ def signup():
 def logout(): 
     session.clear() 
     return redirect(url_for("auth.login"))
-
-
-@auth.route("/signup-verification")
-def index(): 
-    msg = Message("Hola",recipients=[''])
-    msg.body = "Hola como estas prro" 
-    mail.send(msg)
-    return "se envio correctamente"  
