@@ -8,6 +8,8 @@ db = MySQL()
 def create_app(): 
     app = Flask(__name__)
     app.secret_key = 'super secret key'
+
+    #Configura la app en base a la configuracion que le pasamos como objeto
     app.config.from_object(HerokuDB_Config)
 
     db.init_app(app)
