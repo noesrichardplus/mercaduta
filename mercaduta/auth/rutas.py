@@ -50,4 +50,4 @@ def logout():
 
 @auth.route("/signup-verification/<email>-<nombre>-<apellido>-<passwd>", methods= ['GET','POST'])
 def signup_verification(email,nombre,apellido,passwd): 
-    return "{email} nombre {nombre} apellido {apellido}"
+    return f"{email} nombre {nombre} apellido {apellido}"
