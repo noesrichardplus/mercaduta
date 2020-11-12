@@ -37,9 +37,9 @@ def signup():
             if (verificar_email(email) and 
                 verificar_registro(nombre, apellido, passwd, repe_passwd)):
                 session['signup_email'] = email
+                session['signup_passwd'] = passwd
                 session['signup_nombre'] = nombre
                 session['signup_apellido'] = apellido
-                session['signup_passwd'] = passwd
                 return redirect(url_for('auth.signup_verification'))
             else:
                 return "Las contras no se repiten bien o no cumplen con las normas"
@@ -58,8 +58,8 @@ def logout():
 def signup_verification(): 
     if request.method == "POST": 
         if request.form['verification_code'] == str(session['code']): 
-            dbq.registrar_usuario(session['signup_email'],session['signup_nombre'],
-                                session['signup_apellido'],session['signup_passwd'])
+            dbq.registrar_usuario(session['signup_email'],session['signup_passwd'],
+                                session['signup_nombre'],session['signup_apellido'])
             return redirect(url_for("auth.logout"))
     session['code'] = random.randint(1000,10000)
     msg = Message("Codigo de verificacion mercadUTA",recipients=[session['signup_email']])
