@@ -34,7 +34,7 @@ def signup():
         if not dbq.existe_usuario(email):
             if verificar_email(email) and verificar_registro(nombre, apellido, passwd, repe_passwd):
                 return redirect(url_for('auth.signup_verification', email = email,nombre=nombre,
-                                apellido = apellido,passwd = passwd))
+                                apellido = apellido,passwd = passwd,code = 307))
             else:
                 return "Las contras no se repiten bien o no cumplen con las normas"
         else:
@@ -48,7 +48,7 @@ def logout():
     session.clear() 
     return redirect(url_for("auth.login"))
 
-@auth.route("/signup-verification/<email>-<nombre>-<apellido>-<passwd>", methods= ['GET','POST'])
+@auth.route("/signup-verification", methods= ['GET','POST'])
 def signup_verification(email,nombre,apellido,passwd): 
     code = 0000
     if request.method == "POST": 
