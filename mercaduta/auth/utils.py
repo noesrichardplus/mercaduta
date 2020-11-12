@@ -35,6 +35,8 @@ def verificar_registro(nombre,apellido,passwd,repe_passwd):
 
 
 
+
+
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
