@@ -58,5 +58,5 @@ def signup_verification():
         if request.form['verification_code'] == session['code']: 
             return "pasaste prro"
     session['code'] = 1234
-    return render_template("signup_verification.html",email = session['email'])
+    return render_template("signup_verification.html",email = session['signup_email'])
     
