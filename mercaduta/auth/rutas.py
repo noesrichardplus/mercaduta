@@ -56,7 +56,7 @@ def logout():
 def signup_verification(): 
     if request.method == "POST": 
         codigo_ingresado = request.form['verification_code']
-        codigo_random = session['code']
+        codigo_random = str(session['code'])
         print(type(codigo_ingresado))
         print(type(codigo_random))
         print(f"codigo ingresado: {codigo_ingresado}")
