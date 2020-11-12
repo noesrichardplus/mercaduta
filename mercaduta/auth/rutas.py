@@ -55,9 +55,13 @@ def logout():
 @auth.route("/signup-verification", methods= ['GET','POST'])
 def signup_verification(): 
     if request.method == "POST": 
-        print(request.form['verification_code'])
-        print(session['code'])
-        if request.form['verification_code'] == session['code']: 
+        codigo_ingresado = request.form['verification_code']
+        codigo_random = session['code']
+        print(type(codigo_ingresado))
+        print(type(codigo_random))
+        print(f"codigo ingresado: {codigo_ingresado}")
+        print(f"codigo random: {codigo_random}")
+        if codigo_ingresado == codigo_random: 
             return redirect(url_for('auth.login'))
     session['code'] = 1234
     return render_template("signup_verification.html",email = session['signup_email'])
