@@ -58,7 +58,7 @@ def signup_verification():
         print(request.form['verification_code'])
         print(session['code'])
         if request.form['verification_code'] == session['code']: 
-            return "pasaste prro"
+            return redirect(url_for('auth.login'))
     session['code'] = 1234
     return render_template("signup_verification.html",email = session['signup_email'])
     
