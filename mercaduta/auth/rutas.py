@@ -55,6 +55,8 @@ def logout():
 @auth.route("/signup-verification", methods= ['GET','POST'])
 def signup_verification(): 
     if request.method == "POST": 
+        print(request.form['verification_code'])
+        print(session['code'])
         if request.form['verification_code'] == session['code']: 
             return "pasaste prro"
     session['code'] = 1234
