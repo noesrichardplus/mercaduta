@@ -56,4 +56,4 @@ def signup_verification(email,nombre,apellido,passwd):
         if verification_code == code: 
             return "Si coinciden" 
     code = 1234
-    return render_template(url_for("signup_verification.html",email = email))
+    return render_template("signup_verification.html",email = email)
