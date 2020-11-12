@@ -42,6 +42,7 @@ def crear_oferta():
         descripcion = request.form['des']
         fecha = '2020-01-01'
         usuario = session['email']
-        db_query.crear_oferta(titulo,precio,categoria,condicion,descripcion,fecha,usuario)            
+        db_query.crear_oferta(titulo,precio,categoria,condicion,
+                              descripcion,fecha,usuario)            
         return redirect(url_for('mercado.inicio'))
     return render_template("crear_oferta.html")
