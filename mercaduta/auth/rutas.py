@@ -62,8 +62,6 @@ def signup_verification():
                                 session['signup_nombre'],session['signup_apellido'])
             return redirect(url_for("auth.logout"))
     session['code'] = random.randint(1000,10000)
-    msg = Message("Codigo de verificacion mercadUTA",recipients=[session['signup_email']])
-    msg.body = f"El codigo para verificar tu cuenta es: {session['code']}" 
-    mail.send(msg)
+    enviar_email(session['signup_email'],session['code'])
     return render_template("signup_verification.html",email = session['signup_email'])
     
