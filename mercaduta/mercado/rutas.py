@@ -53,4 +53,4 @@ def crear_oferta():
 @login_required
 def solicitudes():
     solicitudes = db_query.mostar_solicitudes(session['email'])
-    return render_template("solicitudes.html")
+    return render_template("solicitudes.html", solicitudes = solicitudes)
