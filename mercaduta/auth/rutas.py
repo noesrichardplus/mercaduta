@@ -61,6 +61,8 @@ def signup_verification():
             dbq.registrar_usuario(session['signup_email'],session['signup_passwd'],
                                 session['signup_nombre'],session['signup_apellido'])
             return redirect(url_for("auth.logout"))
+        else: 
+            return render_template("signup_verification.html",email = session['signup_email'])
     session['code'] = random.randint(1000,10000)
     enviar_email(session['signup_email'],session['code'])
     return render_template("signup_verification.html",email = session['signup_email'])

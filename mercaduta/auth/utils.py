@@ -37,6 +37,7 @@ def verificar_registro(nombre,apellido,passwd,repe_passwd):
     else: 
         return False
 
+
 def enviar_email_async(app,msg): 
     with app.app_context(): 
         mail.send(msg)
