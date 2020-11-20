@@ -11,7 +11,7 @@
         <p>
             {{solicitud['email_solicitante']}} solicito tus datos<br> 
             Por la oferta: {{solicitud['titulo_oferta']}}
-            <input type="button" value="Aceptar solicitud de datos">
+            <button type="button" onclick="location.href = '{{url_for('mercado.aceptar_solicitud') }}'">Aceptar Solicitud</button>
         </p>
 
     </article>

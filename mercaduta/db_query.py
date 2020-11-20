@@ -57,3 +57,7 @@ def ingresar_solicitud(email, id_oferta):
     cur = db.connection.cursor()
     cur.execute(f'''INSERT INTO solicitud(email_solicitante,id_oferta) VALUES("{email}",{id_oferta});''' )
     cur.connection.commit()
+
+
+def aceptar_solicitud(id_solicitud): 
+    pass

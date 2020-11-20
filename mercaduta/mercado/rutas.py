@@ -61,3 +61,8 @@ def solicitudes():
 def solicitar_datos(id_oferta): 
     db_query.ingresar_solicitud(session['email'],id_oferta)
     return render_template("solicitar_datos.html")
+
+@mercado.route("/aceptar-solicitud-<id_solicitud>")
+@login_required
+def aceptar_solicitud(id_solicitud): 
+
