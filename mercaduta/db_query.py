@@ -44,3 +44,11 @@ def crear_oferta(titulo,precio,categoria,condicion,descripcion,fecha,usuario):
     cur.execute(f'''INSERT INTO ofertas(titulo_oferta,precio_oferta,categoria_oferta,condicion_oferta,des_oferta,fecha_oferta,usuario_oferta)
                     VALUES  ('{titulo}',{precio},'{categoria}',{condicion},'{descripcion}','{fecha}','{usuario}');''' )
     cur.connection.commit()                    
+
+def mostar_solicitudes(email): 
+    cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute(f'''SELECT solicitud.email_solicitante,ofertas.titulo_oferta, ofertas.usuario_oferta
+                    FROM solicitud 
+                    INNER JOIN ofertas ON solicitud.id_oferta = ofertas.id_oferta
+                    WHERE ofertas.usuario_oferta = "{email}";''')
+    return cur.fetchall() 

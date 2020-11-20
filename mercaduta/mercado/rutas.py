@@ -33,6 +33,7 @@ def comunicate():
 
 
 @mercado.route("/crear-oferta",methods = ["GET","POST"]) 
+@login_required
 def crear_oferta(): 
     if request.method == "POST": 
         titulo = request.form['titulo']
@@ -46,3 +47,10 @@ def crear_oferta():
                               descripcion,fecha,usuario)            
         return redirect(url_for('mercado.inicio'))
     return render_template("crear_oferta.html")
+
+
+@mercado.route("/solicitudes") 
+@login_required
+def solicitudes():
+    solicitudes = db_query.mostar_solicitudes(session['email'])
+    return render_template("solicitudes.html")
