@@ -52,3 +52,8 @@ def mostar_solicitudes(email):
                     INNER JOIN ofertas ON solicitud.id_oferta = ofertas.id_oferta
                     WHERE ofertas.usuario_oferta = "{email}";''')
     return cur.fetchall() 
+
+def ingresar_solicitud(email, id_oferta):
+    cur = db.connection.cursor()
+    cur.execute(f'''INSERT INTO solicitud(email_solicitante,id_oferta) VALUES("{email}",{id_oferta});''' )
+    cur.connection.commit()

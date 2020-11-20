@@ -8,7 +8,7 @@
 <body>
     {% block content %} 
         <h1>{{producto['titulo_oferta']}}</h1>
-
+        <button type="button" onclick="location.href = '{{url_for('mercado.solicitar_datos'),id_oferta = producto['id_oferta'] }}'">Solicitar Datos</button>
     {% endblock %}
 </body>
 </html>
