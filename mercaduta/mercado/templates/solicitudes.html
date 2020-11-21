@@ -10,7 +10,7 @@
     <article>
         <p>
             {{solicitud['email_solicitante']}} solicito tus datos<br> 
-            Por la oferta: {{solicitud['titulo_oferta']}}
+            Por la oferta: {{solicitud['titulo_oferta']}}<br>
             <button type="button" onclick="location.href = '{{url_for('mercado.aceptar_solicitud', id_solicitud = solicitud['id_solicitud'] ) }}'">Aceptar Solicitud</button>
             
         </p>
@@ -21,12 +21,12 @@
     {% for info_solicitud in info_solicitudes %} 
             <article>
                 <p>
-                    Los datos del usuario que solicitaste por la compra de: 
-                    {{ info_solicitud['titulo_oferta'] }}
-                    Son...
-                    Email: {{ info_solicitud['email'] }}
-                    Nombre: {{ info_solicitud['nombre'] }} 
-                    Apellido: {{ info_solicitud['apellido'] }} 
+                    Los datos del usuario que solicitaste por la oferta de: <br>
+                    {{ info_solicitud['titulo_oferta'] }}<br>
+                    Son...<br>
+                    Email: {{ info_solicitud['email'] }}<br>
+                    Nombre: {{ info_solicitud['nombre'] }} <br>
+                    Apellido: {{ info_solicitud['apellido'] }} <br>
                     
                 </p>
 

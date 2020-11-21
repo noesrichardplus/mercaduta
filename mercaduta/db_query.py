@@ -68,5 +68,5 @@ def info_usuario_solicitado(email):
                     FROM solicitud 
                     INNER JOIN ofertas ON solicitud.id_oferta = ofertas.id_oferta
                     INNER JOIN usuarios  ON ofertas.usuario_oferta = usuarios.email
-                    WHERE solicitud.email_solicitante = "{email}"; ''')
+                    WHERE solicitud.email_solicitante = "{email}" AND solicitud.estado = true; ''')
     return cur.fetchall() 
