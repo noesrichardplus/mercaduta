@@ -12,10 +12,27 @@
             {{solicitud['email_solicitante']}} solicito tus datos<br> 
             Por la oferta: {{solicitud['titulo_oferta']}}
             <button type="button" onclick="location.href = '{{url_for('mercado.aceptar_solicitud') }}'">Aceptar Solicitud</button>
+            
         </p>
 
     </article>
         
+    {% endfor %} 
+    {% for info_solicitud in info_solicitudes %} 
+        {% if info_solicitud['estado'] == True %}
+            <article>
+                <p>
+                    Los datos del usuario que solicitaste por la compra de: 
+                    {{ info_solicitud['titulo_oferta'] }}
+                    Son...
+                    Email: {{ info_solicitud['email'] }}
+                    Nombre: {{ info_solicitud['nombre'] }} 
+                    Apellido: {{ info_solicitud['apellido'] }} 
+                    
+                </p>
+
+            </article>
+        {% endif %} 
     {% endfor %} 
 
 </body>
