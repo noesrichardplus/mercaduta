@@ -60,7 +60,9 @@ def ingresar_solicitud(email, id_oferta):
 
 
 def aceptar_solicitud(id_solicitud): 
-    pass
+    cur = db.connection.cursor()
+    cur.execute(f'''UPDATE solicitud SET estado = true WHERE id_solicitud = {id_solicitud};''' )
+    cur.connection.commit()
 
 def info_usuario_solicitado(email): 
     cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
