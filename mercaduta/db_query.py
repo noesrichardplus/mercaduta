@@ -47,7 +47,7 @@ def crear_oferta(titulo,precio,categoria,condicion,descripcion,fecha,usuario):
 
 def mostar_solicitudes(email): 
     cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(f'''SELECT solicitud.email_solicitante,ofertas.titulo_oferta, ofertas.usuario_oferta
+    cur.execute(f'''SELECT solicitud.id_solicitud,solicitud.email_solicitante,ofertas.titulo_oferta, ofertas.usuario_oferta
                     FROM solicitud 
                     INNER JOIN ofertas ON solicitud.id_oferta = ofertas.id_oferta
                     WHERE ofertas.usuario_oferta = "{email}";''')
