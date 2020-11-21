@@ -53,7 +53,9 @@ def crear_oferta():
 @login_required
 def solicitudes():
     solicitudes = db_query.mostar_solicitudes(session['email'])
-    return render_template("solicitudes.html", solicitudes = solicitudes)
+    info_solicitudes = db_query.info_usuario_solicitado(session['email'])
+    print(info_solicitudes)
+    return render_template("solicitudes.html", solicitudes = solicitudes, info_solicitudes = info_solicitudes)
 
 
 @mercado.route("/solicitar-datos-<id_oferta>")
@@ -61,3 +63,9 @@ def solicitudes():
 def solicitar_datos(id_oferta): 
     db_query.ingresar_solicitud(session['email'],id_oferta)
     return render_template("solicitar_datos.html")
+
+@mercado.route("/aceptar-solicitud-<id_solicitud>")
+@login_required
+def aceptar_solicitud(id_solicitud): 
+    db_query.aceptar_solicitud(id_solicitud)
+    return redirect(url_for('mercado.solicitudes'))

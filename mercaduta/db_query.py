@@ -47,7 +47,7 @@ def crear_oferta(titulo,precio,categoria,condicion,descripcion,fecha,usuario):
 
 def mostar_solicitudes(email): 
     cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(f'''SELECT solicitud.email_solicitante,ofertas.titulo_oferta, ofertas.usuario_oferta
+    cur.execute(f'''SELECT solicitud.id_solicitud,solicitud.email_solicitante,ofertas.titulo_oferta, ofertas.usuario_oferta
                     FROM solicitud 
                     INNER JOIN ofertas ON solicitud.id_oferta = ofertas.id_oferta
                     WHERE ofertas.usuario_oferta = "{email}";''')
@@ -57,3 +57,18 @@ def ingresar_solicitud(email, id_oferta):
     cur = db.connection.cursor()
     cur.execute(f'''INSERT INTO solicitud(email_solicitante,id_oferta) VALUES("{email}",{id_oferta});''' )
     cur.connection.commit()
+
+
+def aceptar_solicitud(id_solicitud): 
+    cur = db.connection.cursor()
+    cur.execute(f'''UPDATE solicitud SET estado = true WHERE id_solicitud = {id_solicitud};''' )
+    cur.connection.commit()
+
+def info_usuario_solicitado(email): 
+    cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute(f'''SELECT solicitud.email_solicitante,ofertas.titulo_oferta, usuarios.email,usuarios.nombre,usuarios.apellido
+                    FROM solicitud 
+                    INNER JOIN ofertas ON solicitud.id_oferta = ofertas.id_oferta
+                    INNER JOIN usuarios  ON ofertas.usuario_oferta = usuarios.email
+                    WHERE solicitud.email_solicitante = "{email}" AND solicitud.estado = true; ''')
+    return cur.fetchall() 
