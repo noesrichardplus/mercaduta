@@ -66,4 +66,4 @@ def solicitar_datos(id_oferta):
 @mercado.route("/aceptar-solicitud-<id_solicitud>")
 @login_required
 def aceptar_solicitud(id_solicitud): 
-
+    pass
