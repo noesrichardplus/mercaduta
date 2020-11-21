@@ -19,7 +19,6 @@
         
     {% endfor %} 
     {% for info_solicitud in info_solicitudes %} 
-        {% if info_solicitud['estado'] == True %}
             <article>
                 <p>
                     Los datos del usuario que solicitaste por la compra de: 
@@ -32,7 +31,7 @@
                 </p>
 
             </article>
-        {% endif %} 
+         
     {% endfor %} 
 
 </body>

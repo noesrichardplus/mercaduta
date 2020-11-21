@@ -54,6 +54,7 @@ def crear_oferta():
 def solicitudes():
     solicitudes = db_query.mostar_solicitudes(session['email'])
     info_solicitudes = db_query.info_usuario_solicitado(session['email'])
+    print(info_solicitudes)
     return render_template("solicitudes.html", solicitudes = solicitudes, info_solicitudes = info_solicitudes)
 
 
