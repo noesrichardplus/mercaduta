@@ -1,7 +1,6 @@
-
 from flask import Blueprint,render_template, session, url_for, redirect,request
 from mercaduta.auth.utils import login_required
-import mercaduta.db_query as db_query
+import mercaduta.mercado.dbq as dbq
 
 mercado = Blueprint("mercado",__name__,template_folder='templates')
 
@@ -16,13 +15,13 @@ def inicio():
 @mercado.route("/mercado/<categoria>")
 @login_required
 def mostrar_productos(categoria): 
-    productos = db_query.seleccionar_ofertas(categoria)
+    productos = dbq.seleccionar_ofertas(categoria)
     return render_template("productos.html",productos=productos)
 
 @mercado.route("/mercado/descripcion/<id_oferta>")
 @login_required
 def descripcion(id_oferta): 
-    producto = db_query.seleccionar_oferta(id_oferta)
+    producto = dbq.seleccionar_oferta(id_oferta)
     return render_template("descripcion.html",producto = producto)
 
 
@@ -43,7 +42,7 @@ def crear_oferta():
         descripcion = request.form['des']
         fecha = '2020-01-01'
         usuario = session['email']
-        db_query.crear_oferta(titulo,precio,categoria,condicion,
+        dbq.crear_oferta(titulo,precio,categoria,condicion,
                               descripcion,fecha,usuario)            
         return redirect(url_for('mercado.inicio'))
     return render_template("crear_oferta.html")
@@ -52,8 +51,8 @@ def crear_oferta():
 @mercado.route("/solicitudes") 
 @login_required
 def solicitudes():
-    solicitudes = db_query.mostar_solicitudes(session['email'])
-    info_solicitudes = db_query.info_usuario_solicitado(session['email'])
+    solicitudes = dbq.mostar_solicitudes(session['email'])
+    info_solicitudes = dbq.info_usuario_solicitado(session['email'])
     print(info_solicitudes)
     return render_template("solicitudes.html", solicitudes = solicitudes, info_solicitudes = info_solicitudes)
 
@@ -61,11 +60,11 @@ def solicitudes():
 @mercado.route("/solicitar-datos-<id_oferta>")
 @login_required
 def solicitar_datos(id_oferta): 
-    db_query.ingresar_solicitud(session['email'],id_oferta)
+    dbq.ingresar_solicitud(session['email'],id_oferta)
     return render_template("solicitar_datos.html")
 
 @mercado.route("/aceptar-solicitud-<id_solicitud>")
 @login_required
 def aceptar_solicitud(id_solicitud): 
-    db_query.aceptar_solicitud(id_solicitud)
+    dbq.aceptar_solicitud(id_solicitud)
     return redirect(url_for('mercado.solicitudes'))

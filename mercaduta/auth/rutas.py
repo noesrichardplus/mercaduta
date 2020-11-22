@@ -2,7 +2,7 @@ from flask import render_template, redirect, request, Blueprint, url_for, sessio
 from flask_mail import Message
 from mercaduta import mail
 from mercaduta.auth.utils import *
-import mercaduta.db_query as dbq
+import mercaduta.auth.dbq as dbq
 import random
 
 
