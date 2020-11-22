@@ -73,3 +73,15 @@ def info_usuario_solicitado(email):
                     INNER JOIN usuarios  ON ofertas.usuario_oferta = usuarios.email
                     WHERE solicitud.email_solicitante = "{email}" AND solicitud.estado = true; ''')
     return cur.fetchall() 
+
+
+def change_passwd(email,passwd): 
+    cur = db.connection.cursor()
+    cur.execute(f'''UPDATE usuarios SET passwd = '{passwd}' WHERE email = '{email}';''' )
+    cur.connection.commit()
+
+def check_passwd(passwd,email): 
+    cur = db.connection.cursor()
+    cur.execute(f"SELECT EXISTS( SELECT * FROM usuarios WHERE email = '{email}' AND passwd = '{passwd}' )")
+    return cur.fetchone()[0]
+
