@@ -66,7 +66,7 @@ def aceptar_solicitud(id_solicitud):
 
 def info_usuario_solicitado(email): 
     cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(f'''SELECT solicitud.email_solicitante,ofertas.titulo_oferta, usuarios.email,usuarios.nombre,usuarios.apellido
+    cur.execute(f'''SELECT solicitud.email_solicitante,ofertas.titulo_oferta, usuarios.email,usuarios.nombre,usuarios.apellido,usuarios.celular
                     FROM solicitud 
                     INNER JOIN ofertas ON solicitud.id_oferta = ofertas.id_oferta
                     INNER JOIN usuarios  ON ofertas.usuario_oferta = usuarios.email
