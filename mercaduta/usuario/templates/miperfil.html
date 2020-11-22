@@ -12,9 +12,9 @@
     <h1>{{usuario['email']}}</h1>
 
     <form action="{{url_for('usuario.passwd_change') }}" method = "POST"> 
-        <input name = "actual_passwd" type="passwd" placeholder="Contraseña actual">
-        <input name = "new_passwd" type="passwd" placeholder="Nueva contraseña">
-        <input name = "repe_passwd" type="passwd" placeholder="Repetir contraseña">
+        <input name = "actual_passwd" type="password" placeholder="Contraseña actual">
+        <input name = "new_passwd" type="password" placeholder="Nueva contraseña">
+        <input name = "repe_passwd" type="password" placeholder="Repetir contraseña">
         <input type="submit" value="Cambiar contraseña">
     </form>
 

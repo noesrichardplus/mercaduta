@@ -20,13 +20,8 @@ def verificar_email(email):
 
 def verificar_registro(nombre,apellido,passwd,repe_passwd): 
     regex_nombres = "[^\ ][a-zA-Z]"
-
-
-    
     nombre_valido = re.search(regex_nombres,nombre)
     apellido_valido = re.search(regex_nombres,apellido)
-   
-    
     if nombre_valido and apellido_valido and verify_passwd(passwd): 
         if passwd == repe_passwd: 
             return True

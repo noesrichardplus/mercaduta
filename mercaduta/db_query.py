@@ -77,7 +77,7 @@ def info_usuario_solicitado(email):
 
 def change_passwd(email,passwd): 
     cur = db.connection.cursor()
-    cur.execute(f'''UPDATE usuarios SET passwd = {passwd} WHERE email = {email};''' )
+    cur.execute(f'''UPDATE usuarios SET passwd = '{passwd}' WHERE email = '{email}';''' )
     cur.connection.commit()
 
 def check_passwd(passwd,email): 
