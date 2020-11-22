@@ -21,13 +21,17 @@
     {% for info_solicitud in info_solicitudes %} 
             <article>
                 <p>
-                    Los datos del usuario que solicitaste por la oferta de: <br>
+                    Aque estan los datos del usuario que solicitaste por la oferta de: <br>
                     {{ info_solicitud['titulo_oferta'] }}<br>
-                    Son...<br>
                     Email: {{ info_solicitud['email'] }}<br>
                     Nombre: {{ info_solicitud['nombre'] }} <br>
                     Apellido: {{ info_solicitud['apellido'] }} <br>
-                    
+                    {% if info_solicitud['celular'] != None %} 
+                        Celular: {{ info_solicitud['celular'] }}
+                    {% endif %}
+                    {% if info_solicitud['contacto_alter'] != None %} 
+                        Contacto alternativo: {{ info_solicitud['contacto_alter'] }}
+                    {% endif %}
                 </p>
 
             </article>
