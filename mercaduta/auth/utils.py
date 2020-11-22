@@ -21,15 +21,13 @@ def verificar_email(email):
 def verificar_registro(nombre,apellido,passwd,repe_passwd): 
     regex_nombres = "[^\ ][a-zA-Z]"
 
-    regex = "^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?.&])[A-Za-z\d@$!#%*?.&]{6,20}$"
 
-    pat = re.compile(regex)
     
     nombre_valido = re.search(regex_nombres,nombre)
     apellido_valido = re.search(regex_nombres,apellido)
-    passwd_valida = re.search(pat, passwd) 
+   
     
-    if nombre_valido and apellido_valido and passwd_valida: 
+    if nombre_valido and apellido_valido and verify_passwd(passwd): 
         if passwd == repe_passwd: 
             return True
         else: 
@@ -37,6 +35,10 @@ def verificar_registro(nombre,apellido,passwd,repe_passwd):
     else: 
         return False
 
+def verify_passwd(passwd): 
+    regex = "^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?.&])[A-Za-z\d@$!#%*?.&]{6,20}$"
+    pat = re.compile(regex)
+    return re.search(pat, passwd) 
 
 def enviar_email_async(app,msg): 
     with app.app_context(): 
