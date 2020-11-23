@@ -1,21 +1,5 @@
-
 from mercaduta import db
 import MySQLdb
-def verificar_cuenta(email,passwd): 
-    cur = db.connection.cursor()
-    cur.execute(f"SELECT EXISTS( SELECT * FROM usuarios WHERE email = '{email}' AND passwd = '{passwd}')")
-    return cur.fetchone()[0]
-
-
-def registrar_usuario(email,passwd,nombre,apellido):
-    cur = db.connection.cursor()
-    cur.execute(f"INSERT INTO usuarios(email, passwd, nombre, apellido) VALUES ('{email}','{passwd}','{nombre}','{apellido}')")
-    db.connection.commit()
-
-def existe_usuario(email): 
-    cur = db.connection.cursor()
-    cur.execute(f"SELECT EXISTS( SELECT * FROM usuarios WHERE email = '{email}' )")
-    return cur.fetchone()[0]
 
 def seleccionar_ofertas(categoria): 
     cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -27,17 +11,6 @@ def seleccionar_oferta(id_oferta):
     cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute(f"SELECT * FROM ofertas WHERE id_oferta={id_oferta}")
     return cur.fetchone()
-
-
-def get_usuario(email): 
-    cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(f"SELECT * FROM usuarios WHERE email = '{email}'")
-    return cur.fetchone()
-
-def get_ofertas(email): 
-    cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(f"SELECT * FROM ofertas WHERE usuario_oferta = '{email}'")
-    return cur.fetchall()
 
 def crear_oferta(titulo,precio,categoria,condicion,descripcion,fecha,usuario): 
     cur = db.connection.cursor()
@@ -73,15 +46,3 @@ def info_usuario_solicitado(email):
                     INNER JOIN usuarios  ON ofertas.usuario_oferta = usuarios.email
                     WHERE solicitud.email_solicitante = "{email}" AND solicitud.estado = true; ''')
     return cur.fetchall() 
-
-
-def change_passwd(email,passwd): 
-    cur = db.connection.cursor()
-    cur.execute(f'''UPDATE usuarios SET passwd = '{passwd}' WHERE email = '{email}';''' )
-    cur.connection.commit()
-
-def check_passwd(passwd,email): 
-    cur = db.connection.cursor()
-    cur.execute(f"SELECT EXISTS( SELECT * FROM usuarios WHERE email = '{email}' AND passwd = '{passwd}' )")
-    return cur.fetchone()[0]
-
