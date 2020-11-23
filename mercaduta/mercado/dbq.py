@@ -45,4 +45,10 @@ def info_usuario_solicitado(email):
                     INNER JOIN ofertas ON solicitud.id_oferta = ofertas.id_oferta
                     INNER JOIN usuarios  ON ofertas.usuario_oferta = usuarios.email
                     WHERE solicitud.email_solicitante = "{email}" AND solicitud.estado = true; ''')
-    return cur.fetchall() 
+    return cur.fetchall()
+
+
+def existe_solicitud(email,id_oferta): 
+    cur = db.connection.cursor()
+    cur.execute(f"SELECT EXISTS( SELECT * FROM solicitud WHERE email_solicitante = '{email}' AND id_oferta = {id_oferta}  )")
+    return cur.fetchone()[0]

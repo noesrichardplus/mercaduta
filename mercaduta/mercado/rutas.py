@@ -60,8 +60,10 @@ def solicitudes():
 @mercado.route("/solicitar-datos-<id_oferta>")
 @login_required
 def solicitar_datos(id_oferta): 
-    dbq.ingresar_solicitud(session['email'],id_oferta)
-    return render_template("solicitar_datos.html")
+    if not dbq.existe_solicitud(session['email'],id_oferta): 
+        dbq.ingresar_solicitud(session['email'],id_oferta)
+        return render_template("solicitar_datos.html")
+    return "Ya solicitaste estos datos" 
 
 @mercado.route("/aceptar-solicitud-<id_solicitud>")
 @login_required
