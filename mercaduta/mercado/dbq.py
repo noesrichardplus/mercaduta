@@ -3,7 +3,7 @@ import MySQLdb
 
 def seleccionar_ofertas(categoria): 
     cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(f"SELECT * FROM ofertas WHERE categoria_oferta='{categoria}'")
+    cur.execute(f"SELECT * FROM ofertas WHERE categoria_oferta={categoria}")
     return cur.fetchall()
 
 
