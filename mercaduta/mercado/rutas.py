@@ -45,7 +45,7 @@ def crear_oferta():
         dbq.crear_oferta(titulo,precio,categoria,condicion,
                               descripcion,fecha,usuario)            
         return redirect(url_for('mercado.inicio'))
-    return render_template("crear_oferta.html")
+    return render_template("crear_oferta.html", categorias = dbq.get_categorias())
 
 
 @mercado.route("/solicitudes") 

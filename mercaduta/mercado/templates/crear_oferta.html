@@ -11,11 +11,9 @@
         <input name = "titulo" type="text" placeholder="Titulo">
         <input name = "precio" type="text" placeholder="Precio">
         <select name="categoria" >
-            <option value="Computadoras">Computadoras</option>
-            <option value="Celulares">Celulares</option>
-            <option value="Componentes electronicos">Componentes electronicos</option>
-            <option value="Vehiculos">Vehiculos</option>
-            <option value="Otros">Otros</option>
+            {% for categoria in categorias %} 
+            <option value="{{ categoria['id_categoria'] }}">{{ categoria['nom_categoria'] }}</option>
+            {% endfor %} 
         </select>
         <input type="radio" name="condicion" id="nuevo" value="1">
         <label for="nuevo">Nuevo</label>
