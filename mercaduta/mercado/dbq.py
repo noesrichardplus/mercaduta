@@ -52,3 +52,8 @@ def existe_solicitud(email,id_oferta):
     cur = db.connection.cursor()
     cur.execute(f"SELECT EXISTS( SELECT * FROM solicitud WHERE email_solicitante = '{email}' AND id_oferta = {id_oferta}  )")
     return cur.fetchone()[0]
+
+def get_categorias(): 
+    cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute(f'''SELECT * FROM categoria''')
+    return cur.fetchall() 
