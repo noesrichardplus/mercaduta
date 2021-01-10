@@ -69,7 +69,7 @@ class Usuario:
         regex_nombres = "[^\ ][a-zA-Z]"
         nombre_valido = re.search(regex_nombres,self.__nombre)
         apellido_valido = re.search(regex_nombres,self.__apellido)
-        if nombre_valido and apellido_valido and validar_passwd(): 
+        if nombre_valido and apellido_valido and self.validar_passwd(): 
             if self.__passwd == repe_passwd: 
                 return True
             else: 
