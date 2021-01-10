@@ -55,7 +55,7 @@ class Usuario:
     def validar_email(self): 
         regex = "[^@]."
         no_empieza = re.match(regex,self.__email)
-        si_hay = re.search("@",self.__)
+        si_hay = re.search("@",self.__email)
         if no_empieza and si_hay:
             email_divi = re.split("@",self.__)
             if email_divi[1] == "uta.edu.ec": 
