@@ -57,7 +57,7 @@ class Usuario:
         no_empieza = re.match(regex,self.__email)
         si_hay = re.search("@",self.__email)
         if no_empieza and si_hay:
-            email_divi = re.split("@",self.__)
+            email_divi = re.split("@",self.__email)
             if email_divi[1] == "uta.edu.ec": 
                 return True
             else: 
