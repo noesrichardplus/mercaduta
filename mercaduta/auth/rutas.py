@@ -71,6 +71,7 @@ def signup_verification(nuevo_usuario):
             return redirect(url_for("auth.logout"))
         else: 
             return render_template("signup_verification.html",email = session['signup_email'])
+    print(nuevo_usuario.get_email())
     session['code'] = random.randint(1000,10000)
     enviar_email(session['signup_email'],session['code'])
     return render_template("signup_verification.html",email = session['signup_email'])
