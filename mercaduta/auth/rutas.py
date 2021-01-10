@@ -2,6 +2,7 @@ from flask import render_template, redirect, request, Blueprint, url_for, sessio
 from flask_mail import Message
 from mercaduta import mail
 from mercaduta.auth.utils import *
+from mercaduta.clases.usuario import Usuario
 import mercaduta.auth.dbq as dbq
 import random
 
@@ -14,11 +15,11 @@ auth = Blueprint('auth', __name__,template_folder='templates',
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form['email_user']
-        passwd = request.form['passwd_user']
-        es_cuenta = dbq.verificar_cuenta(email, passwd)
-        if es_cuenta:
-            session['email'] = email
+        usuario = Usuario()
+        usuario.set_email(request.form['email_user'])
+        usuario.set_passwd(request.form['passwd_user'])
+        if usuario.valido():
+            session['email'] = usuario.get_email()
             return redirect(url_for('mercado.inicio'))
         return render_template('login.html')
 
@@ -28,18 +29,20 @@ def login():
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        email = request.form['email']
-        nombre = request.form['nombre']
-        apellido = request.form['apellido']
-        passwd = request.form['contra']
+        nuevo_usuario = Usuario()
+        nuevo_usuario.set_email(request.form['email'])
+        nuevo_usuario.set_nombre(request.form['nombre'])
+        nuevo_usuario.set_apellido(request.form['apellido'])
+        nuevo_usuario.set_passwd(request.form['contra'])
         repe_passwd = request.form['repe_contra']
-        if not dbq.existe_usuario(email):
-            if (verificar_email(email) and 
-                verificar_registro(nombre, apellido, passwd, repe_passwd)):
-                session['signup_email'] = email
-                session['signup_passwd'] = passwd
-                session['signup_nombre'] = nombre
-                session['signup_apellido'] = apellido
+
+        if not nuevo_usuario.existe():
+            if (nuevo_usuario.validar_email() and 
+                nuevo_usuario.validar_atributos()):
+                session['signup_email'] = nuevo_usuario.get_email()
+                session['signup_passwd'] = nuevo_usuario.get_passwd()
+                session['signup_nombre'] = nuevo_usuario.get_nombre()
+                session['signup_apellido'] = nuevo_usuario.get_apellido()
                 return redirect(url_for('auth.signup_verification'))
             else:
                 return "Las contras no se repiten bien o no cumplen con las normas"
