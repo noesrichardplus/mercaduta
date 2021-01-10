@@ -39,10 +39,12 @@ def signup():
         if not nuevo_usuario.existe():
             if (nuevo_usuario.validar_email() and 
                 nuevo_usuario.validar_atributos(repe_passwd)):
+                '''
                 session['signup_email'] = nuevo_usuario.get_email()
                 session['signup_passwd'] = nuevo_usuario.get_passwd()
                 session['signup_nombre'] = nuevo_usuario.get_nombre()
                 session['signup_apellido'] = nuevo_usuario.get_apellido()
+                '''
                 return redirect(url_for('auth.signup_verification', nuevo_usuario = nuevo_usuario))
             else:
                 return "Las contras no se repiten bien o no cumplen con las normas"
