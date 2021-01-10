@@ -45,7 +45,7 @@ def signup():
                 session['signup_nombre'] = nuevo_usuario.get_nombre()
                 session['signup_apellido'] = nuevo_usuario.get_apellido()
               
-                return redirect(url_for('auth.signup_verification', nuevo_usuario = nuevo_usuario))
+                return redirect(url_for('auth.signup_verification'))
             else:
                 return "Las contras no se repiten bien o no cumplen con las normas"
         else:
@@ -59,19 +59,19 @@ def logout():
     session.clear() 
     return redirect(url_for("auth.login"))
 
-@auth.route("/signup-verification-<nuevo_usuario>", methods= ['GET','POST'])
-def signup_verification(nuevo_usuario): 
+@auth.route("/signup-verification", methods= ['GET','POST'])
+def signup_verification(): 
     if request.method == "POST": 
         if request.form['verification_code'] == str(session['code']): 
-            nuevo_usuario.registrar_usuario()
-            '''
+
             dbq.registrar_usuario(session['signup_email'],session['signup_passwd'],
                                 session['signup_nombre'],session['signup_apellido'])
-                                '''
+
             return redirect(url_for("auth.logout"))
         else: 
+
             return render_template("signup_verification.html",email = session['signup_email'])
-    print(nuevo_usuario.get_email())
+            
     session['code'] = random.randint(1000,10000)
     enviar_email(session['signup_email'],session['code'])
     return render_template("signup_verification.html",email = session['signup_email'])
