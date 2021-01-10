@@ -38,7 +38,7 @@ def signup():
 
         if not nuevo_usuario.existe():
             if (nuevo_usuario.validar_email() and 
-                nuevo_usuario.validar_atributos()):
+                nuevo_usuario.validar_atributos(repe_passwd)):
                 session['signup_email'] = nuevo_usuario.get_email()
                 session['signup_passwd'] = nuevo_usuario.get_passwd()
                 session['signup_nombre'] = nuevo_usuario.get_nombre()
