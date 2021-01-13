@@ -8,7 +8,7 @@
 <body>
     <h3>Calificacion al usurio: {{vendedor}}</h3>
     <h3>Por la venta de: {{oferta}}</h3> 
-    <form action="mercado.calificar_vendedor">
+    <form action="{{ url_for('mercado.calificar_vendedor') }}" method="POST">
         <select name="valor" >
             <option value="1">1</option> 
             <option value="2">2</option> 
