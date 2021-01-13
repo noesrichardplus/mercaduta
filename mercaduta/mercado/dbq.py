@@ -62,5 +62,5 @@ def get_categorias():
 def calificar_vendedor(comprador,vendedor,oferta,valor,descripcion): 
     cur = db.connection.cursor()
     cur.execute(f'''INSERT INTO calificacion(comprador_calificacion, vendedor_calificacion,oferta_calificacion,valor_calificacion,des_calificacion) 
-                    VALUES ({comprador},{vendedor},{oferta},{valor},{descripcion})''' )
+                    VALUES ('{comprador}','{vendedor}','{oferta}','{valor}','{descripcion}')''' )
     cur.connection.commit()
