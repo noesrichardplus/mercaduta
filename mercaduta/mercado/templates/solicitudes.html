@@ -33,7 +33,7 @@
                         Contacto alternativo: {{ info_solicitud['contacto_alter'] }}
                     {% endif %}
                 </p>
-
+                <button type="button" onclick="location.href = '{{url_for('mercado.calificar_vendedor', vendedor = info_solicitud['email'], oferta = info_solicitud['titulo_oferta'] ) }}'">Calificar vendedor</button>
             </article>
          
     {% endfor %} 

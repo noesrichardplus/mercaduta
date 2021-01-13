@@ -57,3 +57,10 @@ def get_categorias():
     cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute(f'''SELECT * FROM categoria''')
     return cur.fetchall() 
+
+
+def calificar_vendedor(comprador,vendedor,oferta,valor,descripcion): 
+    cur = db.connection.cursor()
+    cur.execute(f'''INSERT INTO calificacion(comprador_calificacion, vendedor_calificacion,oferta_calificacion,valor_calificacion,des_calificacion) 
+                    VALUES ({comprador},{vendedor},{oferta},{valor},{descripcion})''' )
+    cur.connection.commit()
