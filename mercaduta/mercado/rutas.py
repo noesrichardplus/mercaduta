@@ -70,7 +70,7 @@ def aceptar_solicitud(id_solicitud):
     dbq.aceptar_solicitud(id_solicitud)
     return redirect(url_for('mercado.solicitudes'))
 
-@mercado.route("/calificar", methods = ['GET', 'POST'])
+@mercado.route("/calificar-<vendedor>-<oferta>", methods = ['GET', 'POST'])
 @login_required
 def calificar_vendedor(vendedor,oferta): 
     if request.method == "POST": 
