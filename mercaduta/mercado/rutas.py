@@ -22,7 +22,8 @@ def mostrar_productos(categoria):
 @login_required
 def descripcion(id_oferta): 
     producto = dbq.seleccionar_oferta(id_oferta)
-    return render_template("descripcion.html",producto = producto)
+    calificaciones = dbq.calificaciones_vendedor_por_oferta(id_oferta)
+    return render_template("descripcion.html",producto = producto, calificaciones = calificaciones)
 
 
 @mercado.route("/comunicate")
@@ -53,7 +54,6 @@ def crear_oferta():
 def solicitudes():
     solicitudes = dbq.mostar_solicitudes(session['email'])
     info_solicitudes = dbq.info_usuario_solicitado(session['email'])
-    print(info_solicitudes)
     return render_template("solicitudes.html", solicitudes = solicitudes, info_solicitudes = info_solicitudes)
 
 
@@ -70,3 +70,11 @@ def solicitar_datos(id_oferta):
 def aceptar_solicitud(id_solicitud): 
     dbq.aceptar_solicitud(id_solicitud)
     return redirect(url_for('mercado.solicitudes'))
+
+@mercado.route("/calificar-<vendedor>-<oferta>", methods = ['GET', 'POST'])
+@login_required
+def calificar_vendedor(vendedor,oferta): 
+    if request.method == "POST" and not dbq.existe_calificacion(session['email'],vendedor,oferta): 
+        dbq.calificar_vendedor(session['email'],vendedor,oferta,request.form['valor'],request.form['des'])
+        return redirect(url_for('mercado.inicio'))
+    return render_template('calificar.html',vendedor = vendedor, oferta = oferta)
