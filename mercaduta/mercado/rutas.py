@@ -22,7 +22,8 @@ def mostrar_productos(categoria):
 @login_required
 def descripcion(id_oferta): 
     producto = dbq.seleccionar_oferta(id_oferta)
-    return render_template("descripcion.html",producto = producto)
+    calificaciones = dbq.calificaciones_vendedor_por_oferta(id_oferta)
+    return render_template("descripcion.html",producto = producto, calificaciones = calificaciones)
 
 
 @mercado.route("/comunicate")

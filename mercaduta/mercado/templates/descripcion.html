@@ -9,6 +9,11 @@
     {% block content %} 
         <h1>{{producto['titulo_oferta']}}</h1>
         <button type="button" onclick="location.href = '{{url_for('mercado.solicitar_datos',id_oferta = producto['id_oferta'] )}}'">Solicitar Datos</button>
+
+        {% for calificacion in calificaciones %} 
+            <h3>Nota: {{calificacion['valor_calificacion']}}</h3>
+            <h4>Descripcion: {{calificacion['des_calificacion']</h4>
+        {% endfor %}
     {% endblock %}
 </body>
 </html>
