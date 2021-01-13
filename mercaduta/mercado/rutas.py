@@ -73,7 +73,7 @@ def aceptar_solicitud(id_solicitud):
 @mercado.route("/calificar-<vendedor>-<oferta>", methods = ['GET', 'POST'])
 @login_required
 def calificar_vendedor(vendedor,oferta): 
-    if request.method == "POST": 
+    if request.method == "POST" and not dbq.existe_calificacion(session['email'],vendedor,oferta): 
         dbq.calificar_vendedor(session['email'],vendedor,oferta,request.form['valor'],request.form['des'])
-        return redirect('mercado.inicio')
+        return redirect(url_for('mercado.inicio'))
     return render_template('calificar.html',vendedor = vendedor, oferta = oferta)

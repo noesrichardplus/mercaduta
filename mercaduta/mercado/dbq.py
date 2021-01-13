@@ -64,3 +64,8 @@ def calificar_vendedor(comprador,vendedor,oferta,valor,descripcion):
     cur.execute(f'''INSERT INTO calificacion(comprador_calificacion, vendedor_calificacion,oferta_calificacion,valor_calificacion,des_calificacion) 
                     VALUES ('{comprador}','{vendedor}','{oferta}','{valor}','{descripcion}')''' )
     cur.connection.commit()
+
+def existe_calificacion(comprador,vendedor,oferta): 
+    cur = db.connection.cursor()
+    cur.execute(f"SELECT EXISTS( SELECT EXISTS( SELECT * FROM calificacion WHERE comprador_calificacion = '{comprador}' AND vendedor_calificacion = '{vendedor}' AND oferta_calificacion = '{oferta}' ))")
+    return cur.fetchone()[0]
