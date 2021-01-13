@@ -67,7 +67,7 @@ def calificar_vendedor(comprador,vendedor,oferta,valor,descripcion):
 
 def existe_calificacion(comprador,vendedor,oferta): 
     cur = db.connection.cursor()
-    cur.execute(f"SELECT EXISTS( SELECT EXISTS( SELECT * FROM calificacion WHERE comprador_calificacion = '{comprador}' AND vendedor_calificacion = '{vendedor}' AND oferta_calificacion = '{oferta}' ))")
+    cur.execute(f"SELECT EXISTS( SELECT * FROM calificacion WHERE comprador_calificacion = '{comprador}' AND vendedor_calificacion = '{vendedor}' AND oferta_calificacion = '{oferta}' )")
     return cur.fetchone()[0]
 
 def calificaciones_vendedor_por_oferta(id_oferta): 
