@@ -8,24 +8,20 @@
 </head>
 <body>
     <header> mercadUTA </header>
-    <section>
-        <div>
-            <h1>Aqui va una imagen bacan xd </h1>
-        </div>
-    </section>
+    
     <nav>
         <ul>
             <li><a href="">Inicio</a></li>
             <li><a href="{{url_for('usuario.mi_perfil')}}">Mi perfil</a></li>
             <li><a href="{{url_for('usuario.mis_ofertas')}}">Mis ofertas</a></li>
             <li><a href="{{url_for('mercado.comunicate')}}">Comunicate con nosotros</a></li>
+            <li><a href="{{url_for('mercado.crear_oferta') }}">Crear Oferta</a></li>
+            <li><a href="{{url_for('mercado.solicitudes') }}">Ver solicitudes</a></li>
             <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
         </ul>
     </nav> 
 
     <section>
-    <button type="button" onclick="location.href = '{{url_for('mercado.crear_oferta') }}'">Crear oferta</button>
-    <button type="button" onclick="location.href = '{{url_for('mercado.solicitudes') }}'">Ver solicitudes</button>
         <div>
             <div>
                 <br><h1>CATEGORIAS</h1>
