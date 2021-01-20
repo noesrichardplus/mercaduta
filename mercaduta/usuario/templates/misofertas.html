@@ -12,7 +12,7 @@
             <h3>{{oferta['titulo_oferta']}}</h3>
             <h4>Descripcion: {{oferta['des_oferta']}}</h4>
             <h4>Precio: {{oferta['precio_oferta']}}</h4>
-            <button type="button" onclick="location.href = '{{url_for('usuario.eliminar_oferta',id_oferta = oferta['id_oferta'] )}}'"></button>
+            <button type="button" onclick="location.href = '{{url_for('usuario.eliminar_oferta',id_oferta = oferta['id_oferta'] )}}'">Borrar oferta</button>
         {%endfor%}
     {%endblock%}
 </body>
