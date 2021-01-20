@@ -1,5 +1,6 @@
 from flask import Blueprint,render_template,request,session,redirect,url_for
 from mercaduta.auth.utils import verify_passwd
+from mercaduta.clases.usuario import Usuario
 import mercaduta.usuario.dbq as dbq
 
 usuario = Blueprint('usuario',__name__,template_folder='templates')
@@ -35,3 +36,35 @@ def passwd_change():
 def eliminar_oferta(id_oferta): 
     dbq.eliminar_oferta(id_oferta)
     return redirect(url_for('mercado.inicio'))
+
+@usuario.route("cambiar-nombre", methods=['POST'])
+def cambiar_nombre(): 
+    usuario = Usuario()
+    usuario.set_email(session['email'])
+    usuario.set_nombre(request.form['nombre'])
+    usuario.actualizar_nombre()
+
+@usuario.route("cambiar-apellido", methods=['POST'])
+def cambiar_apellido(): 
+    usuario = Usuario()
+    usuario.set_email(session['email'])
+    usuario.set_apellido(request.form['apellido'])
+    usuario.actualizar_apellido()
+
+@usuario.route("cambiar-celular", methods=['POST'])
+def cambiar_celular(): 
+    usuario = Usuario()
+    usuario.set_email(session['email'])
+    usuario.set_celular(request.form['celular'])
+    usuario.actualizar_celular()
+
+@usuario.route("cambiar-contacto-alter", methods=['POST'])
+def cambiar_contacto_alter(): 
+    usuario = Usuario()
+    usuario.set_email(session['email'])
+    usuario.set_contacto_alter(request.form['contacto_alter'])
+    usuario.actualizar_contacto_alter()
+
+
+
+        

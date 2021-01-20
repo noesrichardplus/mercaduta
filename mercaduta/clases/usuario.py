@@ -86,3 +86,51 @@ class Usuario:
         cur = db.connection.cursor()
         cur.execute(f"INSERT INTO usuarios(email, passwd, nombre, apellido) VALUES ('{self.__email}','{self.__passwd}','{self.__nombre}','{self.__apellido}')")
         db.connection.commit()
+
+    def validar_nombre(self): 
+        regex_nombres = "[^\ ][a-zA-Z]"
+        nombre_valido = re.search(regex_nombres,self.__nombre)
+        if nombre_valido: 
+            return True
+        else: 
+            return False
+        
+    def validar_apellido(self): 
+        regex_nombres = "[^\ ][a-zA-Z]"
+        apellido_valido = re.search(regex_nombres,self.__apellido)
+        if apellido_valido: 
+            return True
+        else: 
+            return False
+
+    def validar_celular(self): 
+        regex_celular = "^(\d{10})"
+        celular_valido = re.search(regex_celular,self.__celular)
+        if celular_valido: 
+            return True
+        else: 
+            return False
+
+    def actualizar_nombre(self): 
+        if self.validar_nombre(): 
+            cur = db.connection.cursor()
+            cur.execute(f'''UPDATE usuarios SET nombre = '{self.__nombre}' WHERE email = '{self.__email}';''' )
+            cur.connection.commit()
+    def actualizar_apellido(self): 
+        if self.validar_apellido(): 
+            cur = db.connection.cursor()
+            cur.execute(f'''UPDATE usuarios SET apellido = '{self.__apellido}' WHERE email = '{self.__email}';''' )
+            cur.connection.commit()
+
+    def actualizar_celular(self): 
+        if self.validar_celular(): 
+            cur = db.connection.cursor()
+            cur.execute(f'''UPDATE usuarios SET celular = '{self.__celular}' WHERE email = '{self.__email}';''' )
+            cur.connection.commit()
+
+    def actualizar_contacto_alter(self): 
+        cur = db.connection.cursor()
+        cur.execute(f'''UPDATE usuarios SET contacto_alter = '{self.__contacto_alter}' WHERE email = '{self.__email}';''' )
+        cur.connection.commit()
+
+        

@@ -18,6 +18,23 @@
         <input type="submit" value="Cambiar contraseña">
     </form>
 
+    <form action="{{url_for('usuario.cambiar_nombre') }}" method = "POST"> 
+        <input name = "nombre" type="text" placeholder="Nombre">
+        <input type="submit" value="Cambiar nombre">
+    </form>
+
+    <form action="{{url_for('usuario.cambiar_apellido') }}" method = "POST"> 
+        <input name = "apellido" type="text" placeholder="Apellido">
+        <input type="submit" value="Cambiar apellido">
+    </form>
+    <form action="{{url_for('usuario.cambiar_celular') }}" method = "POST"> 
+        <input name = "celular" type="text" placeholder="Celular">
+        <input type="submit" value="Cambiar celular">
+    </form>
+    <form action="{{url_for('usuario.cambiar_contacto_alter') }}" method = "POST"> 
+        <input name = "contacto_alter" type="text" placeholder="Contacto alternativo">
+        <input type="submit" value="Cambiar contacto">
+    </form>
     
 </body>
 </html>
