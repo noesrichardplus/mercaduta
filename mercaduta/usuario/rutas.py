@@ -37,28 +37,28 @@ def eliminar_oferta(id_oferta):
     dbq.eliminar_oferta(id_oferta)
     return redirect(url_for('mercado.inicio'))
 
-@usuario.route("cambiar-nombre", methods=['POST'])
+@usuario.route("/cambiar-nombre", methods=['POST'])
 def cambiar_nombre(): 
     usuario = Usuario()
     usuario.set_email(session['email'])
     usuario.set_nombre(request.form['nombre'])
     usuario.actualizar_nombre()
 
-@usuario.route("cambiar-apellido", methods=['POST'])
+@usuario.route("/cambiar-apellido", methods=['POST'])
 def cambiar_apellido(): 
     usuario = Usuario()
     usuario.set_email(session['email'])
     usuario.set_apellido(request.form['apellido'])
     usuario.actualizar_apellido()
 
-@usuario.route("cambiar-celular", methods=['POST'])
+@usuario.route("/cambiar-celular", methods=['POST'])
 def cambiar_celular(): 
     usuario = Usuario()
     usuario.set_email(session['email'])
     usuario.set_celular(request.form['celular'])
     usuario.actualizar_celular()
 
-@usuario.route("cambiar-contacto-alter", methods=['POST'])
+@usuario.route("/cambiar-contacto-alter", methods=['POST'])
 def cambiar_contacto_alter(): 
     usuario = Usuario()
     usuario.set_email(session['email'])
