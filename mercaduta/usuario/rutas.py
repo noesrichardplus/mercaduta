@@ -29,3 +29,9 @@ def passwd_change():
         return redirect(url_for('usuario.mi_perfil'))
     else: 
         return "No se pudo cambiar la contra" 
+
+
+@usuario.route("/eliminar-oferta-<id_oferta>")
+def eliminar_oferta(id_oferta): 
+    dbq.eliminar_oferta(id_oferta)
+    return redirect(url_for('mercado.inicio'))

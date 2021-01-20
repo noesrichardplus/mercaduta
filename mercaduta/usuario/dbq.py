@@ -24,3 +24,9 @@ def check_passwd(passwd,email):
     cur = db.connection.cursor()
     cur.execute(f"SELECT EXISTS( SELECT * FROM usuarios WHERE email = '{email}' AND passwd = '{passwd}' )")
     return cur.fetchone()[0]
+
+
+def eliminar_oferta(id_oferta): 
+    cur = db.connection.cursor()
+    cur.execute(f'''DELETE FROM ofertas WHERE id_oferta = {id_oferta};''' )
+    cur.connection.commit()
