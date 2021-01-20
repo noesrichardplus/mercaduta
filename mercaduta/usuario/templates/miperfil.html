@@ -7,9 +7,11 @@
 </head>
 <body>
 
-    <h1>{{usuario['nombre']}}</h1>
-    <h1>{{usuario['apellido']}}</h1>
-    <h1>{{usuario['email']}}</h1>
+    <h1>Nombre: {{usuario['nombre']}}</h1>
+    <h1>Apellido: {{usuario['apellido']}}</h1>
+    <h1>Email: {{usuario['email']}}</h1>
+    <h1>Celular: {{usuario['celular']}}</h1>
+    <h1>Contacto alter: {{usuario['contacto_alter']}}</h1>
 
     <form action="{{url_for('usuario.passwd_change') }}" method = "POST"> 
         <input name = "actual_passwd" type="password" placeholder="Contraseña actual">
