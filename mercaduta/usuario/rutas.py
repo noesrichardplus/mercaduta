@@ -43,6 +43,7 @@ def cambiar_nombre():
     usuario.set_email(session['email'])
     usuario.set_nombre(request.form['nombre'])
     usuario.actualizar_nombre()
+    return redirect(url_for('usuario.mi_perfil'))
 
 @usuario.route("/cambiar-apellido", methods=['POST'])
 def cambiar_apellido(): 
@@ -50,6 +51,7 @@ def cambiar_apellido():
     usuario.set_email(session['email'])
     usuario.set_apellido(request.form['apellido'])
     usuario.actualizar_apellido()
+    return redirect(url_for('usuario.mi_perfil'))
 
 @usuario.route("/cambiar-celular", methods=['POST'])
 def cambiar_celular(): 
@@ -57,6 +59,7 @@ def cambiar_celular():
     usuario.set_email(session['email'])
     usuario.set_celular(request.form['celular'])
     usuario.actualizar_celular()
+    return redirect(url_for('usuario.mi_perfil'))
 
 @usuario.route("/cambiar-contacto-alter", methods=['POST'])
 def cambiar_contacto_alter(): 
@@ -64,6 +67,7 @@ def cambiar_contacto_alter():
     usuario.set_email(session['email'])
     usuario.set_contacto_alter(request.form['contacto_alter'])
     usuario.actualizar_contacto_alter()
+    return redirect(url_for('usuario.mi_perfil'))
 
 
 
