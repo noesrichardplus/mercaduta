@@ -78,3 +78,10 @@ def calificar_vendedor(vendedor,oferta):
         dbq.calificar_vendedor(session['email'],vendedor,oferta,request.form['valor'],request.form['des'])
         return redirect(url_for('mercado.inicio'))
     return render_template('calificar.html',vendedor = vendedor, oferta = oferta)
+
+
+@mercado.route("/eliminar-solicitud-<id_solicitud>")
+@login_required
+def eliminar_solicitud(id_solicitud): 
+    dbq.eliminar_solicitud(id_solicitud)
+    return redirect(url_for('mercado.solicitudes'))

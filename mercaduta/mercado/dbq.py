@@ -76,3 +76,8 @@ def calificaciones_vendedor_por_oferta(id_oferta):
     vendedor = cur.fetchall()[0]['usuario_oferta']
     cur.execute(f''' SELECT valor_calificacion,des_calificacion FROM calificacion WHERE vendedor_calificacion = '{vendedor}' ''')
     return cur.fetchall()
+
+def eliminar_solicitud(id_solicitud): 
+    cur = db.connection.cursor()
+    cur.execute(f'''DELETE FROM solicitud WHERE id_solicitud = {id_solicitud};''' )
+    cur.connection.commit()
