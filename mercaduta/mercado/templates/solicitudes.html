@@ -1,43 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('mercado.static', filename='css/solicitudes.css') }}">
 </head>
-<body>
-    {% for solicitud in solicitudes %} 
-    <article>
-        <p>
-            {{solicitud['email_solicitante']}} solicito tus datos<br> 
-            Por la oferta: {{solicitud['titulo_oferta']}}<br>
-            <button type="button" onclick="location.href = '{{url_for('mercado.aceptar_solicitud', id_solicitud = solicitud['id_solicitud'] ) }}'">Aceptar Solicitud</button>
-            <button type="button" onclick="location.href = '{{url_for('mercado.eliminar_solicitud', id_solicitud = solicitud['id_solicitud'] ) }}'">Eliminar Solicitud</button>
-            
-        </p>
 
-    </article>
-        
-    {% endfor %} 
-    {% for info_solicitud in info_solicitudes %} 
+<body>
+    <nav class="menu1">
+        <ul>
+            <li><a href="">Inicio</a></li>
+            <li><a href="{{url_for('usuario.mi_perfil')}}">Mi perfil</a></li>
+            <li><a href="{{url_for('usuario.mis_ofertas')}}">Mis ofertas</a></li>
+            <li><a href="{{url_for('mercado.comunicate')}}">Comunicate con nosotros</a></li>
+            <li><a href="{{url_for('mercado.crear_oferta') }}">Crear Oferta</a></li>
+            <li><a href="{{url_for('mercado.solicitudes') }}">Ver solicitudes</a></li>
+            <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+        </ul>
+    </nav>
+    <nav class="menu2">
+        <div>
+            {% for solicitud in solicitudes %}
             <article>
                 <p>
-                    Aque estan los datos del usuario que solicitaste por la oferta de: <br>
+                    {{solicitud['email_solicitante']}} solicito tus datos<br>
+                    Por la oferta: {{solicitud['titulo_oferta']}}<br>
+                    <button type="button"
+                        onclick="location.href = '{{url_for('mercado.aceptar_solicitud', id_solicitud = solicitud['id_solicitud'] ) }}'">Aceptar
+                        Solicitud</button>
+
+                </p>
+
+            </article>
+
+            {% endfor %}
+            {% for info_solicitud in info_solicitudes %}
+            <article>
+                <p>
+                    Aqui estan los datos del usuario que solicitaste por la oferta de: <br>
                     {{ info_solicitud['titulo_oferta'] }}<br>
                     Email: {{ info_solicitud['email'] }}<br>
                     Nombre: {{ info_solicitud['nombre'] }} <br>
-                    Apellido: {{ info_solicitud['apellido'] }} <br>
-                    {% if info_solicitud['celular'] != None %} 
-                        Celular: {{ info_solicitud['celular'] }}
-                    {% endif %}
-                    {% if info_solicitud['contacto_alter'] != None %} 
-                        Contacto alternativo: {{ info_solicitud['contacto_alter'] }}
+                    Apellido: {{ info_solicitud['apellido'] }} 
+                    {% if info_solicitud['celular'] != None %}<br>
+                    Celular: {{ info_solicitud['celular'] }}
+                    {% endif %}<br>
+                    {% if info_solicitud['contacto_alter'] != None %}<br>
+                    Contacto alternativo: {{ info_solicitud['contacto_alter'] }}
                     {% endif %}
                 </p>
-                <button type="button" onclick="location.href = '{{url_for('mercado.calificar_vendedor', vendedor = info_solicitud['email'], oferta = info_solicitud['titulo_oferta'] ) }}'">Calificar vendedor</button>
+                <button type="button"
+                    onclick="location.href = '{{url_for('mercado.calificar_vendedor', vendedor = info_solicitud['email'], oferta = info_solicitud['titulo_oferta'] ) }}'">Calificar
+                    vendedor</button>
             </article>
-         
-    {% endfor %} 
 
+            {% endfor %}
+        </div>
+    </nav>
 </body>
+
 </html>

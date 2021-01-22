@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+    <link rel="stylesheet" href="{{url_for('mercado.static', filename='css/calificar.css') }}" >
+
 <body>
-    <h3>Calificacion al usurio: {{vendedor}}</h3>
-    <h3>Por la venta de: {{oferta}}</h3> 
-    <form action="{{ url_for('mercado.calificar_vendedor', vendedor = vendedor, oferta = oferta) }}" method="POST">
-        <select name="valor" >
-            <option value="1">1</option> 
-            <option value="2">2</option> 
-            <option value="3">3</option> 
-            <option value="4">4</option> 
-            <option value="5">5</option> 
-        </select>    
-        <input name="des" type="text" placeholder="Descripcion">
-        <input type="submit" value="Enviar calificacion" >
-    </form>
+    <nav class="menu1">
+        <ul>
+            <li><a href="">Inicio</a></li>
+            <li><a href="{{url_for('usuario.mi_perfil')}}">Mi perfil</a></li>
+            <li><a href="{{url_for('usuario.mis_ofertas')}}">Mis ofertas</a></li>
+            <li><a href="{{url_for('mercado.comunicate')}}">Comunicate con nosotros</a></li>
+            <li><a href="{{url_for('mercado.crear_oferta') }}">Crear Oferta</a></li>
+            <li><a href="{{url_for('mercado.solicitudes') }}">Ver solicitudes</a></li>
+            <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+        </ul>
+    </nav>
+    <nav class="menu2">
+        
+        <form action="{{ url_for('mercado.calificar_vendedor', vendedor = vendedor, oferta = oferta) }}" method="POST">
+            <nav class="menu2.1">
+            <h3>Calificacion al usurio: {{vendedor}}</h3>
+            <h3>Por la venta de: {{oferta}}</h3>
+            <select name="valor">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <input name="des" type="text" placeholder="Descripcion">
+            <input type="submit" value="Enviar calificacion">
+        </nav>
+        </form>
+    </nav>
 </body>
+
 </html>

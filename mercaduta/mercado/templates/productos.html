@@ -1,25 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('mercado.static', filename='css/productos.css') }}">
 </head>
-<body>
-    {%block content%}
 
-        {% for producto in productos %}
+<body>
+    <nav class="menu1">
+        <ul>
+            <li><a href="">Inicio</a></li>
+            <li><a href="{{url_for('usuario.mi_perfil')}}">Mi perfil</a></li>
+            <li><a href="{{url_for('usuario.mis_ofertas')}}">Mis ofertas</a></li>
+            <li><a href="{{url_for('mercado.comunicate')}}">Comunicate con nosotros</a></li>
+            <li><a href="{{url_for('mercado.crear_oferta') }}">Crear Oferta</a></li>
+            <li><a href="{{url_for('mercado.solicitudes') }}">Ver solicitudes</a></li>
+            <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+        </ul>
+    </nav>
+    <nav class="menu2">
+        <div>
+            {%block content%}
+
+            {% for producto in productos %}
             <article>
-                <h2> 
-                    <a href="{{url_for('mercado.descripcion',id_oferta=producto['id_oferta'])}}">{{producto['titulo_oferta']}}</a>
+                <h2>
+                    <a
+                        href="{{url_for('mercado.descripcion',id_oferta=producto['id_oferta'])}}">{{producto['titulo_oferta']}}</a>
                 </h2>
                 <h4>Descripcion: {{producto['des_oferta']}}</h4>
                 <h4>Precio: {{producto['precio_oferta']}}</h4>
-                
+
             </article>
 
-        {%endfor%}
+            {%endfor%}
 
-    {%endblock%}
+            {%endblock%}
+        </div>
+    </nav>
 </body>
+
 </html>

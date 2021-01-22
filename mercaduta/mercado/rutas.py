@@ -2,7 +2,8 @@ from flask import Blueprint,render_template, session, url_for, redirect,request
 from mercaduta.auth.utils import login_required
 import mercaduta.mercado.dbq as dbq
 
-mercado = Blueprint("mercado",__name__,template_folder='templates')
+mercado = Blueprint("mercado",__name__,template_folder='templates',
+                static_folder='static',static_url_path="/%s"%__name__)
 
 
 @mercado.route("/")

@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=0, initial-scale=1.0">
     <title>Document</title>
-    <link rel = "stylesheet" href="inicio.css">
+    <link rel = "stylesheet" href="{{url_for('mercado.static', filename='css/inicio.css') }}">
 </head>
 <body>
-    <header> mercadUTA </header>
     
-    <nav>
+    <section>
+        <div>
+            
+        </div>
+    </section>
+    <nav class="menu1">
         <ul>
             <li><a href="">Inicio</a></li>
             <li><a href="{{url_for('usuario.mi_perfil')}}">Mi perfil</a></li>
@@ -22,22 +26,24 @@
     </nav> 
 
     <section>
+        
+    
         <div>
-            <div>
+            <div class="cate">
                 <br><h1>CATEGORIAS</h1>
             </div>
-            <div> 
+            <div class="menu2"> 
                 <div><a href="{{url_for('mercado.mostrar_productos',categoria=1)}}">Computadoras</a></div>
                 <div><a href="">Celulares</a></div>
                 <div><a href="">Componentes electronicos</a></div>
                 <div><a href="">Vehiculos</a></div>
                 <div><a href="">Otros</a></div>
+                <div><a href="">Todos</a></div>
             </div>
-            <div>
-                <a href="">Todos</a>
-            </div>
+            
+            
         </div>
     </section>
-    <footer><h6>Ey que paso gente</h6></footer>
+    
 </body>
 </html>

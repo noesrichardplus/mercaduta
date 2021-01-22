@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('mercado.static', filename='css/solicitar_datos.css') }}">
 </head>
-<body>
-    <p>
-        Se solicitaro los datos para la oferta, 
-        Revisa tus solicitudes para poder contactarte con el vendedor
-    </p>
 
+<body>
+    <nav class="menu1">
+        <ul>
+            <li><a href="">Inicio</a></li>
+            <li><a href="{{url_for('usuario.mi_perfil')}}">Mi perfil</a></li>
+            <li><a href="{{url_for('usuario.mis_ofertas')}}">Mis ofertas</a></li>
+            <li><a href="{{url_for('mercado.comunicate')}}">Comunicate con nosotros</a></li>
+            <li><a href="{{url_for('mercado.crear_oferta') }}">Crear Oferta</a></li>
+            <li><a href="{{url_for('mercado.solicitudes') }}">Ver solicitudes</a></li>
+            <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+        </ul>
+    </nav>
+    <nav class="datos">
+        <p>
+            Se solicitaron los datos para la oferta,
+            Revisa tus solicitudes para poder contactarte con el vendedor
+        </p>
+    </nav>
 </body>
+
 </html>
