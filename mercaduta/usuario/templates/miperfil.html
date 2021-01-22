@@ -7,9 +7,11 @@
 </head>
 <body>
 
-    <h1>{{usuario['nombre']}}</h1>
-    <h1>{{usuario['apellido']}}</h1>
-    <h1>{{usuario['email']}}</h1>
+    <h1>Nombre: {{usuario['nombre']}}</h1>
+    <h1>Apellido: {{usuario['apellido']}}</h1>
+    <h1>Email: {{usuario['email']}}</h1>
+    <h1>Celular: {{usuario['celular']}}</h1>
+    <h1>Contacto alter: {{usuario['contacto_alter']}}</h1>
 
     <form action="{{url_for('usuario.passwd_change') }}" method = "POST"> 
         <input name = "actual_passwd" type="password" placeholder="Contraseña actual">
@@ -18,6 +20,23 @@
         <input type="submit" value="Cambiar contraseña">
     </form>
 
+    <form action="{{url_for('usuario.cambiar_nombre') }}" method = "POST"> 
+        <input name = "nombre" type="text" placeholder="Nombre">
+        <input type="submit" value="Cambiar nombre">
+    </form>
+
+    <form action="{{url_for('usuario.cambiar_apellido') }}" method = "POST"> 
+        <input name = "apellido" type="text" placeholder="Apellido">
+        <input type="submit" value="Cambiar apellido">
+    </form>
+    <form action="{{url_for('usuario.cambiar_celular') }}" method = "POST"> 
+        <input name = "celular" type="text" placeholder="Celular">
+        <input type="submit" value="Cambiar celular">
+    </form>
+    <form action="{{url_for('usuario.cambiar_contacto_alter') }}" method = "POST"> 
+        <input name = "contacto_alter" type="text" placeholder="Contacto alternativo">
+        <input type="submit" value="Cambiar contacto">
+    </form>
     
 </body>
 </html>
