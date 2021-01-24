@@ -21,7 +21,7 @@ class Calificacion:
         self.__comprador = comprador
 
     def set_vendedor(self, vendedor): 
-        self.set_vendedor = vendedor 
+        self.__vendedor = vendedor 
 
     def set_oferta(self, oferta): 
         self.__oferta = oferta
