@@ -94,12 +94,16 @@ def aceptar_solicitud(id_solicitud):
 @mercado.route("/calificar-<vendedor>-<oferta>", methods = ['GET', 'POST'])
 @login_required
 def calificar_vendedor(vendedor,oferta): 
+    
     calificacion = Calificacion()
     calificacion.set_comprador(session['email'])
     calificacion.set_vendedor(vendedor)
     calificacion.set_oferta(oferta)
-
     if request.method == "POST" and not calificacion.existe(): 
+        calificacion = Calificacion()
+        calificacion.set_comprador(session['email'])
+        calificacion.set_vendedor(vendedor)
+        calificacion.set_oferta(oferta)
         calificacion.set_valor(request.form['valor'])
         calificacion.set_descripcion(request.form['des'])
         calificacion.guardar()
