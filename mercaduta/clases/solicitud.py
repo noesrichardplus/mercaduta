@@ -10,7 +10,7 @@ class Solicitud:
         self.__estado = "" 
 
     def set_email_solicitante(self,email): 
-        self.set_email_solicitante = email 
+        self.__email_solicitante = email 
 
     def set_id_oferta(self,id_oferta): 
         self.__id_oferta = id_oferta
