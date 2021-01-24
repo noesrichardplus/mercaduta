@@ -29,7 +29,7 @@ def mostrar_todos_productos():
 @mercado.route("/mercado/descripcion/<id_oferta>")
 @login_required
 def descripcion(id_oferta): 
-    oferta = Oferta.seleccionar_oferta(id_oferta)
+    oferta = Oferta().seleccionar_oferta(id_oferta)
     calificaciones = dbq.calificaciones_vendedor_por_oferta(id_oferta)
     return render_template("descripcion.html",oferta = oferta, calificaciones = calificaciones)
 
