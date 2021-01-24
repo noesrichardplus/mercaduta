@@ -1,6 +1,7 @@
 from flask import Blueprint,render_template, session, url_for, redirect,request
 from mercaduta.auth.utils import login_required
 import mercaduta.mercado.dbq as dbq
+from mercaduta.clases.oferta import Oferta
 
 mercado = Blueprint("mercado",__name__,template_folder='templates',
                 static_folder='static',static_url_path="/%s"%__name__)
@@ -16,21 +17,21 @@ def inicio():
 @mercado.route("/mercado/<categoria>")
 @login_required
 def mostrar_productos(categoria): 
-    productos = dbq.seleccionar_ofertas(categoria)
-    return render_template("productos.html",productos=productos)
+    ofertas = Oferta().listar_ofertas(categoria)
+    return render_template("productos.html",ofertas=ofertas)
 
 @mercado.route("/mercado/todos")
 @login_required
 def mostrar_todos_productos(): 
-    productos = dbq.seleccionar_todas_ofertas()
-    return render_template("productos.html",productos=productos)
+    ofertas = Oferta().listar_todas_ofertas()
+    return render_template("productos.html",ofertas=ofertas)
 
 @mercado.route("/mercado/descripcion/<id_oferta>")
 @login_required
 def descripcion(id_oferta): 
-    producto = dbq.seleccionar_oferta(id_oferta)
+    oferta = Oferta.seleccionar_oferta(id_oferta)
     calificaciones = dbq.calificaciones_vendedor_por_oferta(id_oferta)
-    return render_template("descripcion.html",producto = producto, calificaciones = calificaciones)
+    return render_template("descripcion.html",oferta = oferta, calificaciones = calificaciones)
 
 
 @mercado.route("/comunicate")
@@ -43,16 +44,17 @@ def comunicate():
 @login_required
 def crear_oferta(): 
     if request.method == "POST": 
-        titulo = request.form['titulo']
-        precio = request.form['precio']
-        categoria = request.form['categoria']
-        condicion = request.form['condicion']
-        descripcion = request.form['des']
-        fecha = '2020-01-01'
-        usuario = session['email']
-        dbq.crear_oferta(titulo,precio,categoria,condicion,
-                              descripcion,fecha,usuario)            
-        return redirect(url_for('mercado.inicio'))
+        oferta = Oferta()
+        oferta.set_titulo(request.form['titulo'])
+        oferta.set_precio(request.form['precio'])
+        oferta.set_categoria(request.form['categoria'])
+        oferta.set_condicion(request.form['condicion'])
+        oferta.set_descripcion(request.form['des'])
+        oferta.set_fecha()
+        oferta.set_usuario(session['email'])
+        if oferta.subir(): 
+            return redirect(url_for('mercado.inicio'))
+        return "Tu oferta no se pudo subir, comprueba que hayas ingresado bien la informacion" 
     return render_template("crear_oferta.html", categorias = dbq.get_categorias())
 
 

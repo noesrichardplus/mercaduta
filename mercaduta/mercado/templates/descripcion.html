@@ -23,9 +23,9 @@
     <nav class="menu2">
         <div>
         {% block content %}
-        <h1>{{producto['titulo_oferta']}}</h1>
+        <h1>{{oferta['titulo_oferta']}}</h1>
         <button type="button"
-            onclick="location.href = '{{url_for('mercado.solicitar_datos',id_oferta = producto['id_oferta'] )}}'">Solicitar
+            onclick="location.href = '{{url_for('mercado.solicitar_datos',id_oferta = oferta['id_oferta'] )}}'">Solicitar
             Datos</button>
         <h2>~CALIFICAIONES~</h2>
         {% for calificacion in calificaciones %}

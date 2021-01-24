@@ -24,14 +24,14 @@
         <div>
             {%block content%}
 
-            {% for producto in productos %}
+            {% for oferta in ofertas %}
             <article>
                 <h2>
                     <a
-                        href="{{url_for('mercado.descripcion',id_oferta=producto['id_oferta'])}}">{{producto['titulo_oferta']}}</a>
+                        href="{{url_for('mercado.descripcion',id_oferta=oferta['id_oferta'])}}">{{oferta['titulo_oferta']}}</a>
                 </h2>
-                <h4>Descripcion: {{producto['des_oferta']}}</h4>
-                <h4>Precio: {{producto['precio_oferta']}}</h4>
+                <h4>Descripcion: {{oferta['des_oferta']}}</h4>
+                <h4>Precio: {{oferta['precio_oferta']}}</h4>
 
             </article>
 
