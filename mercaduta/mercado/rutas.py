@@ -63,9 +63,13 @@ def crear_oferta():
 @login_required
 def solicitudes():
     solicitud = Solicitud()
+
     solicitud.set_email_solicitante(session['email'])
+
     solicitudes = solicitud.listar_solicitudes()
+    print(solicitudes)
     info_solicitudes = solicitud.listar_solicitudes_enviadas()
+    print(info_solicitudes)
     return render_template("solicitudes.html", solicitudes = solicitudes, info_solicitudes = info_solicitudes)
 
 
