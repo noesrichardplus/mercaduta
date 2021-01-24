@@ -3,7 +3,8 @@ from mercaduta.auth.utils import login_required
 import mercaduta.mercado.dbq as dbq
 from mercaduta.clases.oferta import Oferta
 from mercaduta.clases.solicitud import Solicitud
-
+from mercaduta.clases.calificacion import Calificacion
+from mercaduta.clases.categoria import Categoria
 
 mercado = Blueprint("mercado",__name__,template_folder='templates',
                 static_folder='static',static_url_path="/%s"%__name__)
@@ -32,7 +33,7 @@ def mostrar_todos_productos():
 @login_required
 def descripcion(id_oferta): 
     oferta = Oferta().seleccionar_oferta(id_oferta)
-    calificaciones = dbq.calificaciones_vendedor_por_oferta(id_oferta)
+    calificaciones = Calificacion.segun_vendedor(id_oferta)
     return render_template("descripcion.html",oferta = oferta, calificaciones = calificaciones)
 
 
@@ -57,7 +58,7 @@ def crear_oferta():
         if oferta.subir(): 
             return redirect(url_for('mercado.inicio'))
         return "Tu oferta no se pudo subir, comprueba que hayas ingresado bien la informacion" 
-    return render_template("crear_oferta.html", categorias = dbq.get_categorias())
+    return render_template("crear_oferta.html", categorias = Categoria().listar_categorias())
 
 
 @mercado.route("/solicitudes") 
@@ -94,8 +95,15 @@ def aceptar_solicitud(id_solicitud):
 @mercado.route("/calificar-<vendedor>-<oferta>", methods = ['GET', 'POST'])
 @login_required
 def calificar_vendedor(vendedor,oferta): 
-    if request.method == "POST" and not dbq.existe_calificacion(session['email'],vendedor,oferta): 
-        dbq.calificar_vendedor(session['email'],vendedor,oferta,request.form['valor'],request.form['des'])
+    calificacion = Calificacion()
+    calificacion.set_comprador(session['email'])
+    calificacion.set_vendedor(vendedor)
+    calificacion.set_oferta(oferta)
+
+    if request.method == "POST" and not calificacion.existe(): 
+        calificacion.set_valor(request.form['valor'])
+        calificacion.set_descripcion(request.form['des'])
+        calificacion.guardar()
         return redirect(url_for('mercado.inicio'))
     return render_template('calificar.html',vendedor = vendedor, oferta = oferta)
 
