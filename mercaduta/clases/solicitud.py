@@ -45,3 +45,8 @@ class Solicitud:
                     INNER JOIN usuarios  ON ofertas.usuario_oferta = usuarios.email
                     WHERE solicitud.email_solicitante = "{self.__email_solicitante}" AND solicitud.estado = true; ''')
         return cur.fetchall()
+
+    def eliminar_solicitud(self, id_solicitud):
+        cur = db.connection.cursor()
+        cur.execute(f'''DELETE FROM solicitud WHERE id_solicitud = {id_solicitud};''' )
+        cur.connection.commit() 

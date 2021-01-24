@@ -99,5 +99,5 @@ def calificar_vendedor(vendedor,oferta):
 @mercado.route("/eliminar-solicitud-<id_solicitud>")
 @login_required
 def eliminar_solicitud(id_solicitud): 
-    dbq.eliminar_solicitud(id_solicitud)
+    Solicitud().eliminar_solicitud(id_solicitud)
     return redirect(url_for('mercado.solicitudes'))
