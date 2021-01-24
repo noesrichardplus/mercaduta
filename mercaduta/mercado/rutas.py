@@ -19,6 +19,12 @@ def mostrar_productos(categoria):
     productos = dbq.seleccionar_ofertas(categoria)
     return render_template("productos.html",productos=productos)
 
+@mercado.route("/mercado/todos")
+@login_required
+def mostrar_todos_productos(): 
+    productos = dbq.seleccionar_todas_ofertas()
+    return render_template("productos.html",productos=productos)
+
 @mercado.route("/mercado/descripcion/<id_oferta>")
 @login_required
 def descripcion(id_oferta): 

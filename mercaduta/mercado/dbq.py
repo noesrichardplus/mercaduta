@@ -6,6 +6,10 @@ def seleccionar_ofertas(categoria):
     cur.execute(f"SELECT * FROM ofertas WHERE categoria_oferta={categoria}")
     return cur.fetchall()
 
+def seleccionar_todas_ofertas(): 
+    cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute(f"SELECT * FROM ofertas")
+    return cur.fetchall()
 
 def seleccionar_oferta(id_oferta): 
     cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
