@@ -1,6 +1,5 @@
 from flask import Blueprint,render_template, session, url_for, redirect,request
 from mercaduta.auth.utils import login_required
-import mercaduta.mercado.dbq as dbq
 from mercaduta.clases.oferta import Oferta
 from mercaduta.clases.solicitud import Solicitud
 from mercaduta.clases.calificacion import Calificacion
