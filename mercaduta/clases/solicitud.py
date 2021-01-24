@@ -50,3 +50,18 @@ class Solicitud:
         cur = db.connection.cursor()
         cur.execute(f'''DELETE FROM solicitud WHERE id_solicitud = {id_solicitud};''' )
         cur.connection.commit() 
+
+    def existe(self): 
+        cur = db.connection.cursor()
+        cur.execute(f"SELECT EXISTS( SELECT * FROM solicitud WHERE email_solicitante = '{self.__email_solicitante}' AND id_oferta = {self.__id_oferta}  )")
+        return cur.fetchone()[0]
+
+    def guardar(self): 
+        cur = db.connection.cursor()
+        cur.execute(f'''INSERT INTO solicitud(email_solicitante,id_oferta) VALUES("{self.__email_solicitante}",{self.__id_oferta});''' )
+        cur.connection.commit()
+
+    def aceptar(self,id_solicitud): 
+        cur = db.connection.cursor()
+        cur.execute(f'''UPDATE solicitud SET estado = true WHERE id_solicitud = {id_solicitud};''' )
+        cur.connection.commit()
