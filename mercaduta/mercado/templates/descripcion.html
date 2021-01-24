@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('mercado.static', filename='css/descripcion.css') }}">
 </head>
+
 <body>
-    {% block content %} 
+    <nav class="menu1">
+        <ul>
+            <li><a href="{{url_for('mercado.inicio')}}">Inicio</a></li>
+            <li><a href="{{url_for('usuario.mi_perfil')}}">Mi perfil</a></li>
+            <li><a href="{{url_for('usuario.mis_ofertas')}}">Mis ofertas</a></li>
+            <li><a href="{{url_for('mercado.comunicate')}}">Comunicate con nosotros</a></li>
+            <li><a href="{{url_for('mercado.crear_oferta') }}">Crear Oferta</a></li>
+            <li><a href="{{url_for('mercado.solicitudes') }}">Ver solicitudes</a></li>
+            <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+        </ul>
+    </nav>
+    <nav class="menu2">
+        <div>
+        {% block content %}
         <h1>{{producto['titulo_oferta']}}</h1>
-        <button type="button" onclick="location.href = '{{url_for('mercado.solicitar_datos',id_oferta = producto['id_oferta'] )}}'">Solicitar Datos</button>
+        <button type="button"
+            onclick="location.href = '{{url_for('mercado.solicitar_datos',id_oferta = producto['id_oferta'] )}}'">Solicitar
+            Datos</button>
         <h2>~CALIFICAIONES~</h2>
-        {% for calificacion in calificaciones %} 
-            <h4>Nota: {{calificacion['valor_calificacion']}}</h3>
-            <h5>Descripcion: {{calificacion['des_calificacion']}}</h4>
+        {% for calificacion in calificaciones %}
+        <h4>Nota: {{calificacion['valor_calificacion']}}</h3>
+            <h5>Descripcion: {{calificacion['des_calificacion']}}
+        </h4>
         {% endfor %}
-    {% endblock %}
+        {% endblock %}
+        </div>
+    </nav>
 </body>
+
 </html>

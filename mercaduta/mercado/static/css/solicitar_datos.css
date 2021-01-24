@@ -1,0 +1,36 @@
+body{
+    background-image: url(../img/fondo1.2.1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.menu1{
+    width: 1350px;
+    height: 0px;
+    position: relative;
+    top: 75px;
+}
+
+.menu1 ul li {
+    list-style: none;
+    float: left;
+}
+
+.menu1 ul li a{
+    text-decoration: none;
+    padding: 10px 50px  ;
+    color: #fff;
+    
+
+}
+.datos{
+    width: 300px;
+    height: 0px;
+    position: relative;
+    top: 200px;
+    left: 500px;
+}
+.datos p{
+    background: whitesmoke;
+    border: 1px solid black;
+}

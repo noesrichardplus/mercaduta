@@ -1,0 +1,60 @@
+body{
+    background-image: url(../img/fondo1.2.1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.menu1{
+    width: 1350px;
+    height: 0px;
+    position: relative;
+    top: 75px;
+}
+
+.menu1 ul li {
+    list-style: none;
+    float: left;
+}
+
+.menu1 ul li a{
+    text-decoration: none;
+    padding: 10px 50px  ;
+    color: #fff;
+    
+
+}
+
+.menu2{
+    width: 1350px;
+    height: 0px;
+    position: relative;
+    top: 75px;
+    left: 150px;
+    
+}
+
+.menu2 div a{
+    text-decoration: none;
+    padding: 10px 90px  ;
+    color: #B40404;
+    
+
+}
+.menu2 div{
+    float: left;
+    color: #B40404;
+    border: 1px solid black;
+    width: 350px;
+    height: 80px;
+    background: whitesmoke;
+    
+}
+.cate{
+    width: 1350px;
+    height: 200px;
+    position: relative;
+    top: 75px;
+    left: 150px;
+    color: red;
+
+}

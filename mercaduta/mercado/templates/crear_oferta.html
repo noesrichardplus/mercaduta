@@ -1,26 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('mercado.static', filename='css/crearO.css') }}">
 </head>
-<body>
-    <form action = "{{ url_for('mercado.crear_oferta') }}" method="POST">
 
-        <input name = "titulo" type="text" placeholder="Titulo">
-        <input name = "precio" type="text" placeholder="Precio">
-        <select name="categoria" >
-            {% for categoria in categorias %} 
-            <option value="{{ categoria['id_categoria'] }}">{{ categoria['nom_categoria'] }}</option>
-            {% endfor %} 
-        </select>
-        <input type="radio" name="condicion" id="nuevo" value="1">
-        <label for="nuevo">Nuevo</label>
-        <input type="radio" name="condicion" id="usado" value="0">
-        <label for="usado">Usado</label>
-        <textarea name="des" id="" cols="30" rows="10"></textarea>
-        <input type="submit" value="SUBIR">
-    </form> 
+<body>
+    <nav class="menu1">
+        <ul>
+            <li><a href="{{url_for('mercado.inicio')}}">Inicio</a></li>
+            <li><a href="{{url_for('usuario.mi_perfil')}}">Mi perfil</a></li>
+            <li><a href="{{url_for('usuario.mis_ofertas')}}">Mis ofertas</a></li>
+            <li><a href="{{url_for('mercado.comunicate')}}">Comunicate con nosotros</a></li>
+            <li><a href="{{url_for('mercado.crear_oferta') }}">Crear Oferta</a></li>
+            <li><a href="{{url_for('mercado.solicitudes') }}">Ver solicitudes</a></li>
+            <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+        </ul>
+    </nav>
+    <nav class="menu2">
+        <form action="{{ url_for('mercado.crear_oferta') }}" method="POST">
+
+            <input name="titulo" type="text" placeholder="Titulo">
+            <input name="precio" type="text" placeholder="Precio">
+            <select name="categoria">
+                {% for categoria in categorias %}
+                <option value="{{ categoria['id_categoria'] }}">{{ categoria['nom_categoria'] }}</option>
+                {% endfor %}
+            </select>
+            <input type="radio" name="condicion" id="nuevo" value="1">
+            <label for="nuevo">Nuevo</label>
+            <input type="radio" name="condicion" id="usado" value="0">
+            <label for="usado">Usado</label>
+            <textarea name="des" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value="SUBIR">
+        </form>
+    </nav>
 </body>
+
 </html>

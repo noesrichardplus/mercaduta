@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+    <link rel="stylesheet" href="{{url_for('mercado.static', filename='css/comunicate.css') }}">
+
 <body>
-    <h1> COMUNICATE CON NOSOTRS </h1>
+    <nav class="menu1">
+        <ul>
+            <li><a href="{{url_for('mercado.inicio')}}">Inicio</a></li>
+            <li><a href="{{url_for('usuario.mi_perfil')}}">Mi perfil</a></li>
+            <li><a href="{{url_for('usuario.mis_ofertas')}}">Mis ofertas</a></li>
+            <li><a href="{{url_for('mercado.comunicate')}}">Comunicate con nosotros</a></li>
+            <li><a href="{{url_for('mercado.crear_oferta') }}">Crear Oferta</a></li>
+            <li><a href="{{url_for('mercado.solicitudes') }}">Ver solicitudes</a></li>
+            <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+        </ul>
+    </nav>
+    <nav class="comunica">
+        <h1> Para comunicarte con nosotros envianos un mensaje a: mercaduta@hotmail.com</h1>
+       
+    </nav>
 </body>
+
 </html>
