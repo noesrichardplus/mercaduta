@@ -1,20 +1,7 @@
 from mercaduta import db
 import MySQLdb
 
-def seleccionar_ofertas(categoria): 
-    cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(f"SELECT * FROM ofertas WHERE categoria_oferta={categoria}")
-    return cur.fetchall()
 
-def seleccionar_todas_ofertas(): 
-    cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(f"SELECT * FROM ofertas")
-    return cur.fetchall()
-
-def seleccionar_oferta(id_oferta): 
-    cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(f"SELECT * FROM ofertas WHERE id_oferta={id_oferta}")
-    return cur.fetchone()
 
 def crear_oferta(titulo,precio,categoria,condicion,descripcion,fecha,usuario): 
     cur = db.connection.cursor()
