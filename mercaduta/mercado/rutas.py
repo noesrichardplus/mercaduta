@@ -2,6 +2,7 @@ from flask import Blueprint,render_template, session, url_for, redirect,request
 from mercaduta.auth.utils import login_required
 import mercaduta.mercado.dbq as dbq
 from mercaduta.clases.oferta import Oferta
+from mercaduta.clases.solicitud import Solicitud
 
 mercado = Blueprint("mercado",__name__,template_folder='templates',
                 static_folder='static',static_url_path="/%s"%__name__)
@@ -61,8 +62,10 @@ def crear_oferta():
 @mercado.route("/solicitudes") 
 @login_required
 def solicitudes():
-    solicitudes = dbq.mostar_solicitudes(session['email'])
-    info_solicitudes = dbq.info_usuario_solicitado(session['email'])
+    solicitud = Solicitud()
+    solicitud.set_email_solicitante(session['email'])
+    solicitudes = solicitud.listar_solicitudes()
+    info_solicitudes = solicitud.listar_solicitudes_enviadas(session['email'])
     return render_template("solicitudes.html", solicitudes = solicitudes, info_solicitudes = info_solicitudes)
 
 
