@@ -10,6 +10,13 @@ class Calificacion:
         self.__valor = "" 
         self.__descripcion = "" 
 
+    def imprimir(self): 
+        print(self.__comprador)
+        print(self.__vendedor)
+        print(self.__oferta)
+        print(self.__valor)
+        print(self.__descripcion)
+
     def set_comprador(self, comprador ): 
         self.__comprador = comprador
 

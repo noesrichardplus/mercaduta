@@ -100,12 +100,11 @@ def calificar_vendedor(vendedor,oferta):
     calificacion.set_vendedor(vendedor)
     calificacion.set_oferta(oferta)
     if request.method == "POST" and not calificacion.existe(): 
-        calificacion = Calificacion()
-        calificacion.set_comprador(session['email'])
-        calificacion.set_vendedor(vendedor)
-        calificacion.set_oferta(oferta)
+        
         calificacion.set_valor(request.form['valor'])
         calificacion.set_descripcion(request.form['des'])
+        
+        calificacion.imprimir()
         calificacion.guardar()
         return redirect(url_for('mercado.inicio'))
     return render_template('calificar.html',vendedor = vendedor, oferta = oferta)
