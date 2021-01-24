@@ -4,6 +4,7 @@ import mercaduta.mercado.dbq as dbq
 from mercaduta.clases.oferta import Oferta
 from mercaduta.clases.solicitud import Solicitud
 
+
 mercado = Blueprint("mercado",__name__,template_folder='templates',
                 static_folder='static',static_url_path="/%s"%__name__)
 
