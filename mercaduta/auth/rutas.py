@@ -1,6 +1,7 @@
 from flask import render_template, redirect, request, Blueprint, url_for, session
 from flask_mail import Message
 from mercaduta import mail
+from mercaduta.auth.utils import *
 from mercaduta.clases.usuario import Usuario
 import mercaduta.auth.dbq as dbq
 import random

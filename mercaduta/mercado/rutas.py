@@ -32,7 +32,7 @@ def mostrar_todos_productos():
 @login_required
 def descripcion(id_oferta): 
     oferta = Oferta().seleccionar_oferta(id_oferta)
-    calificaciones = Calificacion.segun_vendedor(id_oferta)
+    calificaciones = Calificacion().segun_vendedor(id_oferta)
     return render_template("descripcion.html",oferta = oferta, calificaciones = calificaciones)
 
 
