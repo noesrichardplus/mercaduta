@@ -65,7 +65,7 @@ def solicitudes():
     solicitud = Solicitud()
     solicitud.set_email_solicitante(session['email'])
     solicitudes = solicitud.listar_solicitudes()
-    info_solicitudes = solicitud.listar_solicitudes_enviadas(session['email'])
+    info_solicitudes = solicitud.listar_solicitudes_enviadas()
     return render_template("solicitudes.html", solicitudes = solicitudes, info_solicitudes = info_solicitudes)
 
 
