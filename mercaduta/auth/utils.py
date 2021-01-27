@@ -7,7 +7,7 @@ import threading
 
 
 def verify_passwd(passwd): 
-    regex = "^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?.&])[A-Za-z\d@$!#%*?.&]{6,20}$"
+    regex = ".{8,}"
     pat = re.compile(regex)
     return re.search(pat, passwd) 
 

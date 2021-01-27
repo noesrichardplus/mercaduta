@@ -47,7 +47,7 @@ def signup():
               
                 return redirect(url_for('auth.signup_verification'))
             else:
-                return "Las contras no se repiten bien o no cumplen con las normas"
+                return "Las contras no se repiten bien o no cumple con la longitud minima de 8 caracteres"
         else:
             return "El email esta mal"
 
